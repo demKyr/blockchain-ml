@@ -1,7 +1,7 @@
 import Button from "../ui/button";
-import classes from "./submit-review.module.css"
+import classes from "./submit-caption.module.css"
 
-function SubmitReview(props) {
+function SubmitCaption(props) {
     return (
       <form className={classes.form}>
         <div className={classes.controls}>
@@ -24,4 +24,4 @@ function SubmitReview(props) {
     );
 }
 
-export default SubmitReview;
+export default SubmitCaption;

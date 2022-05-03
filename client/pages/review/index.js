@@ -1,7 +1,12 @@
+import ReviewCaption from "../../components/reviews/review-caption";
+
 function ReviewPage() {
   return (
     <div>
-      <h1>This is the review page</h1>
+      <h1 className="instruction">Review Captions</h1>
+      <ReviewCaption />
+      <ReviewCaption />
+      <ReviewCaption />
     </div>
   );
 }
