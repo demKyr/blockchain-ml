@@ -1,9 +1,12 @@
+import SubmitReview from "../../components/reviews/submit-review";
+
 function SubmitPage() {
   return (
     <div>
-      <h1>This is the submit page</h1>
+      <h1 className="instruction">Submit a caption with its label</h1>
+      <SubmitReview />
     </div>
   );
 }
 
-export default SubmitPage
+export default SubmitPage;
