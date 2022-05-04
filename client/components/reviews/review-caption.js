@@ -16,9 +16,9 @@ function ReviewCaption(props) {
               {" "}
               -- select an option --
             </option>
-            <option value="positive">Positive</option>
-            <option value="negative">Negative</option>
-            <option value="neutral">Neutral</option>
+            <option value="0">Positive</option>
+            <option value="1">Negative</option>
+            <option value="2">Neutral</option>
           </select>
         </div>
       </div>

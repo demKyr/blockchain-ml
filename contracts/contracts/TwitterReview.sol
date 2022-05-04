@@ -22,8 +22,8 @@ contract TwitterReview {
     }
 
     function addCaption(string memory _caption, uint8 _lbl) external payable{
-        require(msg.value >= 1e18);
-        require(_lbl >= 0 && _lbl <= 2);
+        require(msg.value >= 1e18,"Not enough eth");
+        require(_lbl >= 0 && _lbl <= 2,"Illegal label");
         captions.push(Caption(_caption, _lbl, [0, 0, 0], false, false, msg.sender));
         captionCnt += 1;
     }
