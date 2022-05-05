@@ -1,5 +1,5 @@
 module.exports = {
-  abi: [
+  submitReviewAbi: [
     {
       inputs: [],
       stateMutability: "nonpayable",
