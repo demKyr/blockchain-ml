@@ -22,7 +22,19 @@
   flex-direction: column;
 }
 
-.control {
+.mainControl {
+  flex: 4;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+
+/* .mainControl label {
+  font-weight: bold;
+} */
+
+.secondaryControl {
   flex: 1;
   display: flex;
   gap: 1rem;
@@ -30,27 +42,18 @@
   justify-content: space-between;
 }
 
-.control label {
+/* .secondaryControl label {
   font-weight: bold;
-}
+} */
 
-.control select {
+.secondaryControl select {
   font: inherit;
   background-color: white;
   border-radius: 6px;
-  width: 30%;
+  /* width: 30%; */
   padding: 0.25rem;
 }
 
-.form button {
-  width: 100%;
-  font: inherit;
-  padding: 0.25rem 0.5rem;
-  background-color: #03be9f;
-  border: 1px solid #03be9f;
-  color: #dafff7;
-  border-radius: 4px;
-}
 
 .form input {
   font: inherit;
@@ -70,20 +73,4 @@
     flex-direction: row;
   }
 
-  .control input {
-    /* width: 80%; */
-    width: 45rem;
-  }
-/* 
-  .control label {
-    width: 10%;
-  } */
-
-  .control select {
-    width: 15rem;
-  }
-
-  .form button {
-    width: 10rem;
-  }
 }

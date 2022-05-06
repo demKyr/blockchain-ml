@@ -6,7 +6,7 @@ import classes from "./review-caption.module.css";
 function ReviewCaption(props) {
   const lblInputRef = useRef();
 
-  function reviewHandler(event){
+  function reviewHandler(event) {
     event.preventDefault();
 
     const givenLbl = lblInputRef.current.value;
@@ -15,15 +15,14 @@ function ReviewCaption(props) {
     }
   }
 
-
   return (
     <form className={classes.form} onSubmit={reviewHandler}>
       <div className={classes.controls}>
-        <div className={classes.control}>
+        <div className={classes.mainControl}>
           <label htmlFor="caption">Caption</label>
           <h2>{props.myCaption}</h2>
         </div>
-        <div className={classes.control}>
+        <div className={classes.secondaryControl}>
           <label htmlFor="lbl">Label</label>
           <select required defaultValue={"default"} id="lbl" ref={lblInputRef}>
             <option value="default" disabled>
@@ -34,8 +33,10 @@ function ReviewCaption(props) {
             <option value="2">Neutral</option>
           </select>
         </div>
+        <div className={classes.secondaryControl}>
+          <Button>Review Caption</Button>
+        </div>
       </div>
-      <Button>Review Caption</Button>
     </form>
   );
 }

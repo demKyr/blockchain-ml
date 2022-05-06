@@ -21,11 +21,11 @@ function SubmitCaption(props) {
   return (
     <form className={classes.form} onSubmit={submitHandler}>
       <div className={classes.controls}>
-        <div className={classes.control}>
+        <div className={classes.mainControl}>
           <label htmlFor="caption">Caption</label>
           <input type="text" required id="caption" ref={captionInputRef} />
         </div>
-        <div className={classes.control}>
+        <div className={classes.secondaryControl}>
           <label htmlFor="lbl">Label</label>
           <select required defaultValue={"default"} id="lbl" ref={lblInputRef}>
             <option value="default" disabled>
@@ -36,8 +36,10 @@ function SubmitCaption(props) {
             <option value="2">Neutral</option>
           </select>
         </div>
+        <div className={classes.secondaryControl}>
+          <Button>Submit Caption</Button>
+        </div>
       </div>
-      <Button>Submit Caption</Button>
     </form>
   );
 }
