@@ -3,9 +3,7 @@ import { useState, useContext, useRef, useEffect } from "react";
 
 import ContractsContext from "../../store/contract-context";
 import VerifiedCaptionList from "../../components/reviews/verified-caption-list";
-
-const NumOfVotes=3;
-const labelMapping = ['Positive','Negative','Neutral'];
+import { NumOfVotes, labelMapping } from "../../constants/parameters";
 
 function VerifyPage() {
   const { activate, active } = useWeb3React();
@@ -27,11 +25,10 @@ function VerifyPage() {
               let verifiedLabel;
               if (captionsDataInput[key][4]) {
                 verifiedLabel = captionsDataInput[key][1];
-              }
-              else{
-                for(const k in captionsDataInput[key][2]){
-                  console.log(k)
-                  if(captionsDataInput[key][2][k]==NumOfVotes){
+              } else {
+                for (const k in captionsDataInput[key][2]) {
+                  console.log(k);
+                  if (captionsDataInput[key][2][k] == NumOfVotes) {
                     verifiedLabel = k;
                   }
                 }
