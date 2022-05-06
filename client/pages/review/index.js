@@ -44,6 +44,22 @@ function ReviewPage() {
     fetchData();
   }, []);
 
+  async function ReviewCaptionHandler(idx, lbl) {
+    if (active) {
+      try {
+        await contractsCtx.contracts["submitReview"].reviewCaption(idx, lbl, {
+          value: ethers.utils.parseEther("1"),
+        });
+        console.log(idx, lbl);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      document.getElementById("executeButton").innerHTML =
+        "Please install Metamask";
+    }
+  }
+
   if (isLoading) {
     return (
       <section>
@@ -55,7 +71,10 @@ function ReviewPage() {
   return (
     <div>
       <h1 className="instruction">Review Captions</h1>
-      <ReviewCaptionList captions={loadedCaptions}/>
+      <ReviewCaptionList
+        captions={loadedCaptions}
+        onReviewCaption={ReviewCaptionHandler}
+      />
     </div>
   );
 }
