@@ -7,13 +7,12 @@ function ReviewCaption(props) {
       <div className={classes.controls}>
         <div className={classes.control}>
           <label htmlFor="caption">Caption</label>
-          <h2>This is a caption</h2>
+          <h2>{props.myCaption}</h2>
         </div>
         <div className={classes.control}>
           <label htmlFor="lbl">Label</label>
-          <select required>
-            <option disabled selected value>
-              {" "}
+          <select required defaultValue={"default"} id="lbl">
+            <option value="default" disabled>
               -- select an option --
             </option>
             <option value="0">Positive</option>
