@@ -38,7 +38,7 @@ function HomePage() {
           <Link href="/review">Review</Link>
         </li>
         <li>
-          <Link href="/verify">Predict</Link>
+          <Link href="/verified">Verified</Link>
         </li>
         <li>
           <Link href="/predict">Predict</Link>

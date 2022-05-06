@@ -17,7 +17,7 @@ function MainHeader() {
             <Link href="/review">Review</Link>
           </li>
           <li>
-            <Link href="/verify">Verify</Link>
+            <Link href="/verified">Verified</Link>
           </li>
           <li>
             <Link href="/predict">Predict</Link>

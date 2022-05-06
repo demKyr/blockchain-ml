@@ -1,13 +1,14 @@
 import { useWeb3React } from "@web3-react/core";
-import { ethers } from "ethers";
 import { useState, useContext, useRef, useEffect } from "react";
 
 import ContractsContext from "../../store/contract-context";
-import ReviewCaption from "../../components/reviews/review-caption";
-import ReviewCaptionList from "../../components/reviews/review-caption-list";
+import VerifiedCaptionList from "../../components/reviews/verified-caption-list";
 
-function ReviewPage() {
-  const { activate, active, library: provider } = useWeb3React();
+const NumOfVotes=3;
+const labelMapping = ['Positive','Negative','Neutral'];
+
+function VerifyPage() {
+  const { activate, active } = useWeb3React();
   const contractsCtx = useContext(ContractsContext);
   const [isLoading, setIsLoading] = useState(true);
   const [loadedCaptions, setLoadedCaptions] = useState([]);
@@ -22,17 +23,32 @@ function ReviewPage() {
             "submitReview"
           ].getCaptions();
           for (const key in captionsDataInput) {
-            if (!captionsDataInput[key][3]) {
+            if (captionsDataInput[key][3]) {
+              let verifiedLabel;
+              if (captionsDataInput[key][4]) {
+                verifiedLabel = captionsDataInput[key][1];
+              }
+              else{
+                for(const k in captionsDataInput[key][2]){
+                  console.log(k)
+                  if(captionsDataInput[key][2][k]==NumOfVotes){
+                    verifiedLabel = k;
+                  }
+                }
+              }
               const captionData = {
                 id: key,
                 content: captionsDataInput[key][0],
+                proposedLbl: labelMapping[captionsDataInput[key][1]],
+                verifiedLbl: labelMapping[verifiedLabel],
+                goodData: captionsDataInput[key][4],
               };
               captionsData.push(captionData);
             }
           }
-
           setIsLoading(false);
           setLoadedCaptions(captionsData);
+          console.log(loadedCaptions);
         } catch (error) {
           console.log(error);
         }
@@ -44,21 +60,6 @@ function ReviewPage() {
     fetchData();
   }, []);
 
-  async function ReviewCaptionHandler(idx, lbl) {
-    if (active) {
-      try {
-        await contractsCtx.contracts["submitReview"].reviewCaption(idx, lbl, {
-          value: ethers.utils.parseEther("1"),
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      document.getElementById("executeButton").innerHTML =
-        "Please install Metamask";
-    }
-  }
-
   if (isLoading) {
     return (
       <section>
@@ -69,13 +70,10 @@ function ReviewPage() {
 
   return (
     <div>
-      <h1 className="instruction">Review Captions</h1>
-      <ReviewCaptionList
-        captions={loadedCaptions}
-        onReviewCaption={ReviewCaptionHandler}
-      />
+      <h1 className="instruction">Verified Captions</h1>
+      <VerifiedCaptionList captions={loadedCaptions} />
     </div>
   );
 }
 
-export default ReviewPage;
+export default VerifyPage;
