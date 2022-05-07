@@ -18,6 +18,7 @@ contract CaptionReview {
 
     struct ModelInfo{
         uint256 id;
+        string name;
         string description;
         uint256 NumberOfVotes;
         uint256 NumberOfCaptions;
@@ -32,10 +33,10 @@ contract CaptionReview {
         chairperson = msg.sender;
     }
 
-    function addModel(string memory _description, uint _NumOfVotes, uint _NumOfCaptions, string[] memory labels) external payable{
+    function addModel(string memory _name, string memory _description, uint _NumOfVotes, uint _NumOfCaptions, string[] memory labels) external payable{
         require(msg.value >= 1e18,"Not enough eth");
         require(_NumOfVotes > 0 && _NumOfCaptions > 0,"Invalid Number of Votes or Captions");
-        models.push(ModelInfo(models.length, _description, _NumOfVotes, _NumOfCaptions, labels));
+        models.push(ModelInfo(models.length, _name, _description, _NumOfVotes, _NumOfCaptions, labels));
     }
 
     function addCaption(string memory _caption, uint8 _lbl, uint _modelId) external payable{
