@@ -11,6 +11,9 @@ function MainHeader() {
       </div>
       <nav>
         <ul>
+          <li className={localPathname == "/request" && classes.selectedTab}>
+            <Link href="/request">Request</Link>
+          </li>
           <li className={localPathname == "/submit" && classes.selectedTab}>
             <Link href="/submit">Submit</Link>
           </li>

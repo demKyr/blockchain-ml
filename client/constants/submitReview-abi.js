@@ -6,46 +6,6 @@ module.exports = {
       type: "constructor",
     },
     {
-      inputs: [
-        {
-          internalType: "uint256",
-          name: "",
-          type: "uint256",
-        },
-      ],
-      name: "captions",
-      outputs: [
-        {
-          internalType: "string",
-          name: "content",
-          type: "string",
-        },
-        {
-          internalType: "uint8",
-          name: "label",
-          type: "uint8",
-        },
-        {
-          internalType: "bool",
-          name: "verified",
-          type: "bool",
-        },
-        {
-          internalType: "bool",
-          name: "goodData",
-          type: "bool",
-        },
-        {
-          internalType: "address",
-          name: "providerAddr",
-          type: "address",
-        },
-      ],
-      stateMutability: "view",
-      type: "function",
-      constant: true,
-    },
-    {
       inputs: [],
       name: "chairperson",
       outputs: [
@@ -63,6 +23,40 @@ module.exports = {
       inputs: [
         {
           internalType: "string",
+          name: "_name",
+          type: "string",
+        },
+        {
+          internalType: "string",
+          name: "_description",
+          type: "string",
+        },
+        {
+          internalType: "uint256",
+          name: "_NumOfVotes",
+          type: "uint256",
+        },
+        {
+          internalType: "uint256",
+          name: "_NumOfCaptions",
+          type: "uint256",
+        },
+        {
+          internalType: "string[]",
+          name: "labels",
+          type: "string[]",
+        },
+      ],
+      name: "addModel",
+      outputs: [],
+      stateMutability: "payable",
+      type: "function",
+      payable: true,
+    },
+    {
+      inputs: [
+        {
+          internalType: "string",
           name: "_caption",
           type: "string",
         },
@@ -70,6 +64,11 @@ module.exports = {
           internalType: "uint8",
           name: "_lbl",
           type: "uint8",
+        },
+        {
+          internalType: "uint256",
+          name: "_modelId",
+          type: "uint256",
         },
       ],
       name: "addCaption",
@@ -90,12 +89,115 @@ module.exports = {
           name: "_lbl",
           type: "uint8",
         },
+        {
+          internalType: "uint256",
+          name: "_modelId",
+          type: "uint256",
+        },
       ],
       name: "reviewCaption",
       outputs: [],
       stateMutability: "payable",
       type: "function",
       payable: true,
+    },
+    {
+      inputs: [],
+      name: "getModels",
+      outputs: [
+        {
+          components: [
+            {
+              internalType: "uint256",
+              name: "id",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "description",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "NumberOfVotes",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "NumberOfCaptions",
+              type: "uint256",
+            },
+            {
+              internalType: "string[]",
+              name: "labels",
+              type: "string[]",
+            },
+          ],
+          internalType: "struct CaptionReview.ModelInfo[]",
+          name: "",
+          type: "tuple[]",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+      constant: true,
+    },
+    {
+      inputs: [
+        {
+          internalType: "uint256",
+          name: "_idx",
+          type: "uint256",
+        },
+      ],
+      name: "getModel",
+      outputs: [
+        {
+          components: [
+            {
+              internalType: "uint256",
+              name: "id",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "description",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "NumberOfVotes",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "NumberOfCaptions",
+              type: "uint256",
+            },
+            {
+              internalType: "string[]",
+              name: "labels",
+              type: "string[]",
+            },
+          ],
+          internalType: "struct CaptionReview.ModelInfo",
+          name: "",
+          type: "tuple",
+        },
+      ],
+      stateMutability: "view",
+      type: "function",
+      constant: true,
     },
     {
       inputs: [],
@@ -109,23 +211,28 @@ module.exports = {
               type: "string",
             },
             {
+              internalType: "uint256",
+              name: "modelId",
+              type: "uint256",
+            },
+            {
               internalType: "uint8",
-              name: "label",
+              name: "proposedLabel",
               type: "uint8",
             },
             {
-              internalType: "uint8[3]",
+              internalType: "uint8",
+              name: "verifiedLabel",
+              type: "uint8",
+            },
+            {
+              internalType: "uint8[]",
               name: "Votes",
-              type: "uint8[3]",
+              type: "uint8[]",
             },
             {
               internalType: "bool",
               name: "verified",
-              type: "bool",
-            },
-            {
-              internalType: "bool",
-              name: "goodData",
               type: "bool",
             },
             {
@@ -139,7 +246,7 @@ module.exports = {
               type: "address[]",
             },
           ],
-          internalType: "struct TwitterReview.Caption[]",
+          internalType: "struct CaptionReview.Caption[]",
           name: "",
           type: "tuple[]",
         },
@@ -166,23 +273,28 @@ module.exports = {
               type: "string",
             },
             {
+              internalType: "uint256",
+              name: "modelId",
+              type: "uint256",
+            },
+            {
               internalType: "uint8",
-              name: "label",
+              name: "proposedLabel",
               type: "uint8",
             },
             {
-              internalType: "uint8[3]",
+              internalType: "uint8",
+              name: "verifiedLabel",
+              type: "uint8",
+            },
+            {
+              internalType: "uint8[]",
               name: "Votes",
-              type: "uint8[3]",
+              type: "uint8[]",
             },
             {
               internalType: "bool",
               name: "verified",
-              type: "bool",
-            },
-            {
-              internalType: "bool",
-              name: "goodData",
               type: "bool",
             },
             {
@@ -196,7 +308,7 @@ module.exports = {
               type: "address[]",
             },
           ],
-          internalType: "struct TwitterReview.Caption",
+          internalType: "struct CaptionReview.Caption",
           name: "",
           type: "tuple",
         },
@@ -213,40 +325,6 @@ module.exports = {
           internalType: "uint256",
           name: "",
           type: "uint256",
-        },
-      ],
-      stateMutability: "view",
-      type: "function",
-      constant: true,
-    },
-    {
-      inputs: [
-        {
-          internalType: "uint256",
-          name: "_idx",
-          type: "uint256",
-        },
-      ],
-      name: "getCaptionText",
-      outputs: [
-        {
-          internalType: "string",
-          name: "",
-          type: "string",
-        },
-      ],
-      stateMutability: "view",
-      type: "function",
-      constant: true,
-    },
-    {
-      inputs: [],
-      name: "getCaptionTexts",
-      outputs: [
-        {
-          internalType: "string[]",
-          name: "",
-          type: "string[]",
         },
       ],
       stateMutability: "view",

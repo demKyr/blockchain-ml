@@ -32,6 +32,9 @@ function HomePage() {
       <h1>This is the home page</h1>
       <ul>
         <li>
+          <Link href="/request">Request</Link>
+        </li>
+        <li>
           <Link href="/submit">Submit</Link>
         </li>
         <li>
