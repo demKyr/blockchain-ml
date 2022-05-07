@@ -2,6 +2,7 @@ import { useRef } from "react";
 
 import Button from "../ui/button";
 import classes from "./submit-caption.module.css";
+import LblDropdown from "./subcomponents/lbl-dropdown";
 
 function SubmitCaption(props) {
   const captionInputRef = useRef();
@@ -28,12 +29,7 @@ function SubmitCaption(props) {
         <div className={classes.secondaryControl}>
           <label htmlFor="lbl">Label</label>
           <select required defaultValue={"default"} id="lbl" ref={lblInputRef}>
-            <option value="default" disabled>
-              -- select an option --
-            </option>
-            <option value="0">Positive</option>
-            <option value="1">Negative</option>
-            <option value="2">Neutral</option>
+            <LblDropdown refName={lblInputRef} />
           </select>
         </div>
         <div className={classes.secondaryControl}>
