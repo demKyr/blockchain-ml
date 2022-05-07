@@ -32,10 +32,14 @@
   color: #fcb8d2;
 }
 
+.selectedTab a{
+  color: rgb(97, 97, 97);
+}
+
 .header a:hover,
 .header a:active,
 .header a.active {
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 .badge {

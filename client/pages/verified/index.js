@@ -27,7 +27,6 @@ function VerifyPage() {
                 verifiedLabel = captionsDataInput[key][1];
               } else {
                 for (const k in captionsDataInput[key][2]) {
-                  console.log(k);
                   if (captionsDataInput[key][2][k] == NumOfVotes) {
                     verifiedLabel = k;
                   }
@@ -45,7 +44,6 @@ function VerifyPage() {
           }
           setIsLoading(false);
           setLoadedCaptions(captionsData);
-          console.log(loadedCaptions);
         } catch (error) {
           console.log(error);
         }

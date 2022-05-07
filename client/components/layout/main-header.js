@@ -3,6 +3,7 @@ import Link from "next/link";
 import classes from "./main-header.module.css";
 
 function MainHeader() {
+  const localPathname = window.location.pathname;
   return (
     <header className={classes.header}>
       <div className={classes.logo}>
@@ -10,16 +11,16 @@ function MainHeader() {
       </div>
       <nav>
         <ul>
-          <li>
+          <li className={localPathname == "/submit" && classes.selectedTab}>
             <Link href="/submit">Submit</Link>
           </li>
-          <li>
+          <li className={localPathname == "/review" && classes.selectedTab}>
             <Link href="/review">Review</Link>
           </li>
-          <li>
+          <li className={localPathname == "/verified" && classes.selectedTab}>
             <Link href="/verified">Verified</Link>
           </li>
-          <li>
+          <li className={localPathname == "/predict" && classes.selectedTab}>
             <Link href="/predict">Predict</Link>
           </li>
         </ul>
