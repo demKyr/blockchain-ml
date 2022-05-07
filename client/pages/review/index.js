@@ -11,18 +11,24 @@ function ReviewPage() {
   const contractsCtx = useContext(ContractsContext);
   const [isLoading, setIsLoading] = useState(true);
   const [loadedCaptions, setLoadedCaptions] = useState([]);
-
+  const signer = provider.getSigner();
+  
   useEffect(() => {
     async function fetchData() {
       if (active) {
         setIsLoading(true);
         try {
+          const signerAddr = await signer.getAddress();
           const captionsData = [];
           const captionsDataInput = await contractsCtx.contracts[
             "submitReview"
           ].getCaptions();
           for (const key in captionsDataInput) {
-            if (!captionsDataInput[key][3]) {
+            console.log(captionsDataInput[key][5] == signerAddr);
+            if (
+              !captionsDataInput[key][3] &&
+              !(captionsDataInput[key][5] == signerAddr)
+            ) {
               const captionData = {
                 id: key,
                 content: captionsDataInput[key][0],
