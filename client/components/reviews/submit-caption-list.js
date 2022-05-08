@@ -7,6 +7,7 @@ function SubmitCaptionList(props) {
         <SubmitCaption
           myKey={model.myKey}
           myName={model.name}
+          myDescription={model.description}
           myLabels={model.labels}
           myId={model.id}
           onSubmitCaption={props.onSubmitCaption}

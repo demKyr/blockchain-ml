@@ -1,6 +1,6 @@
 .form {
   font-size: 18px;
-  margin:  auto;
+  margin: auto;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   padding: 1rem;
   background-color: white;
@@ -16,9 +16,14 @@
   left: auto; */
 }
 
-.modelName {
-  margin-top: 4rem;;
-    text-align: center;
+.modelName h2{
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.modelName h2:hover {
+  color: rgb(136, 136, 136);
+  cursor: pointer;
 }
 
 .controls {
@@ -75,5 +80,4 @@
   .controls {
     flex-direction: row;
   }
-
 }
