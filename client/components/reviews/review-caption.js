@@ -12,7 +12,7 @@ function ReviewCaption(props) {
 
     const givenLbl = lblInputRef.current.value;
     if (!isNaN(+givenLbl)) {
-      props.onReviewCaption(props.myId, givenLbl);
+      props.onReviewCaption(props.myId, givenLbl, props.myModelId);
     }
   }
 
@@ -26,7 +26,7 @@ function ReviewCaption(props) {
         <div className={classes.secondaryControl}>
           <label htmlFor="lbl">Label</label>
           <select required defaultValue={"default"} id="lbl" ref={lblInputRef}>
-            <LblDropdown refName={lblInputRef} />
+            <LblDropdown refName={lblInputRef} labels={props.myLabels}/>
           </select>
         </div>
         <div className={classes.secondaryControl}>
