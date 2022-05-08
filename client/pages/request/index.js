@@ -19,7 +19,6 @@ function RequestPage() {
     if (active) {
       try {
         const labelsArray = labels.split(",");
-        console.log(name, description, NumOfVotes, NumOfCaptions, labelsArray);
         await contractsCtx.contracts["submitReview"].addModel(
           name,
           description,

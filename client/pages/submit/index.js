@@ -1,19 +1,53 @@
 import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
-import { useState, useContext, useRef } from "react";
+import { useState, useContext, useRef, useEffect } from "react";
 
 import ContractsContext from "../../store/contract-context";
-import SubmitCaption from "../../components/reviews/submit-caption";
+import SubmitCaptionList from "../../components/reviews/submit-caption-list";
 
 function SubmitPage() {
   const { activate, active, library: provider } = useWeb3React();
   const contractsCtx = useContext(ContractsContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadedModels, setLoadedModels] = useState([]);
 
-  async function SubmitCaptionHandler(caption, lbl) {
+  useEffect(() => {
+    async function fetchData() {
+      if (active) {
+        setIsLoading(true);
+        try {
+          const modelsData = [];
+          const modelsDataInput = await contractsCtx.contracts[
+            "submitReview"
+          ].getModels();
+          for (const key in modelsDataInput) {
+            const modelData = {
+              key: key,
+              id: parseInt(modelsDataInput[key][0]),
+              name: modelsDataInput[key][1],
+              description: modelsDataInput[key][2],
+              labels: modelsDataInput[key][5],
+            };
+            modelsData.push(modelData);
+          }
+          setIsLoading(false);
+          setLoadedModels(modelsData);
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        document.getElementById("executeButton").innerHTML =
+          "Please install Metamask";
+      }
+    }
+    fetchData();
+  }, []);
+
+  async function SubmitCaptionHandler(caption, lbl, modelId) {
     if (active) {
       try {
-        await contractsCtx.contracts["submitReview"].addCaption(caption, lbl, {
-          value: ethers.utils.parseEther("1"),
+        await contractsCtx.contracts["submitReview"].addCaption(caption, lbl, modelId, {
+          value: ethers.utils.parseEther("0.01"),
         });
       } catch (error) {
         console.log(error);
@@ -24,10 +58,21 @@ function SubmitPage() {
     }
   }
 
+  if (isLoading) {
+    return (
+      <section>
+        <p>Loading...</p>
+      </section>
+    );
+  }
+
   return (
     <div>
       <h1 className="instruction">Submit a caption with its label</h1>
-      <SubmitCaption onSubmitCaption={SubmitCaptionHandler} />
+      <SubmitCaptionList
+        models={loadedModels}
+        onSubmitCaption={SubmitCaptionHandler}
+      />
     </div>
   );
 }

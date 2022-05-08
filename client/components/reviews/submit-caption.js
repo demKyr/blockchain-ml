@@ -15,28 +15,36 @@ function SubmitCaption(props) {
     const givenLbl = lblInputRef.current.value;
 
     if (!isNaN(+givenLbl) && givenCaption.length > 0) {
-      props.onSubmitCaption(givenCaption, +givenLbl);
+      props.onSubmitCaption(givenCaption, +givenLbl, props.myId);
     }
   }
 
   return (
-    <form className={classes.form} onSubmit={submitHandler}>
-      <div className={classes.controls}>
-        <div className={classes.mainControl}>
-          <label htmlFor="caption">Caption</label>
-          <input type="text" required id="caption" ref={captionInputRef} />
+    <div>
+      <h2 className={classes.modelName}>{props.myName}</h2>
+      <form className={classes.form} onSubmit={submitHandler}>
+        <div className={classes.controls}>
+          <div className={classes.mainControl}>
+            <label htmlFor="caption">Caption</label>
+            <input type="text" required id="caption" ref={captionInputRef} />
+          </div>
+          <div className={classes.secondaryControl}>
+            <label htmlFor="lbl">Label</label>
+            <select
+              required
+              defaultValue={"default"}
+              id="lbl"
+              ref={lblInputRef}
+            >
+              <LblDropdown refName={lblInputRef} labels={props.myLabels} />
+            </select>
+          </div>
+          <div className={classes.secondaryControl}>
+            <Button>Submit Caption</Button>
+          </div>
         </div>
-        <div className={classes.secondaryControl}>
-          <label htmlFor="lbl">Label</label>
-          <select required defaultValue={"default"} id="lbl" ref={lblInputRef}>
-            <LblDropdown refName={lblInputRef} />
-          </select>
-        </div>
-        <div className={classes.secondaryControl}>
-          <Button>Submit Caption</Button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }
 
