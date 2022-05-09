@@ -5,7 +5,7 @@ function ReviewCaptionListOfLists(props){
       <ul>
         {props.capsPerModel.map((model) => (
           <ReviewCaptionList
-            myKey={model.myKey}
+            myKey={model.key}
             myName={model.name}
             myDescription={model.description}
             myLabels={model.labels}

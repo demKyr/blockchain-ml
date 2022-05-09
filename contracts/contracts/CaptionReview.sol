@@ -23,6 +23,7 @@ contract CaptionReview {
         uint256 NumberOfVotes;
         uint256 NumberOfCaptions;
         string[] labels;
+        address modelProviderAddr;
     }
 
     Caption[] captions;
@@ -36,7 +37,7 @@ contract CaptionReview {
     function addModel(string memory _name, string memory _description, uint _NumOfVotes, uint _NumOfCaptions, string[] memory labels) external payable{
         require(msg.value >= 1e18,"Not enough eth");
         require(_NumOfVotes > 0 && _NumOfCaptions > 0,"Invalid Number of Votes or Captions");
-        models.push(ModelInfo(models.length, _name, _description, _NumOfVotes, _NumOfCaptions, labels));
+        models.push(ModelInfo(models.length, _name, _description, _NumOfVotes, _NumOfCaptions, labels, msg.sender));
     }
 
     function addCaption(string memory _caption, uint8 _lbl, uint _modelId) external payable{

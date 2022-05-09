@@ -12,11 +12,11 @@ function VerifiedCaption(props) {
         </div>
         <div className={classes.secondaryControl}>
           <label htmlFor="lbl">Proposed Label</label>
-          <h2>{props.myProposedLbl}</h2>
+          <h2>{props.myLabels[props.myProposedLbl]}</h2>
         </div>
         <div className={classes.secondaryControl}>
           <label htmlFor="lbl">Verified Label</label>
-          <h2>{props.myVerifiedLbl}</h2>
+          <h2>{props.myLabels[props.myVerifiedLbl]}</h2>
         </div>
       </div>
     </form>

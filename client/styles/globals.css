@@ -19,3 +19,9 @@ a {
   text-align: center;
   margin: 7rem auto;
 }
+
+.noOutputMsg {
+  text-align: center;
+  font-style: italic;
+  color: rgb(108, 108, 108);
+}

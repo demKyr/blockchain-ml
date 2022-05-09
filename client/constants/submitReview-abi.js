@@ -137,6 +137,11 @@ module.exports = {
               name: "labels",
               type: "string[]",
             },
+            {
+              internalType: "address",
+              name: "modelProviderAddr",
+              type: "address",
+            },
           ],
           internalType: "struct CaptionReview.ModelInfo[]",
           name: "",
@@ -188,6 +193,11 @@ module.exports = {
               internalType: "string[]",
               name: "labels",
               type: "string[]",
+            },
+            {
+              internalType: "address",
+              name: "modelProviderAddr",
+              type: "address",
             },
           ],
           internalType: "struct CaptionReview.ModelInfo",

@@ -3,8 +3,6 @@ import { ethers } from "ethers";
 import { useState, useContext, useRef, useEffect } from "react";
 
 import ContractsContext from "../../store/contract-context";
-import ReviewCaption from "../../components/reviews/review-caption";
-import ReviewCaptionList from "../../components/reviews/review-caption-list";
 import ReviewCaptionListOfLists from "../../components/reviews/review-caption-listOfLists";
 
 function ReviewPage() {
@@ -20,7 +18,6 @@ function ReviewPage() {
         setIsLoading(true);
         try {
           const signerAddr = await signer.getAddress();
-          // const captionsData = [];
           const captionsPerModel = [];
 
           const modelsDataInput = await contractsCtx.contracts[
@@ -37,7 +34,6 @@ function ReviewPage() {
             };
             captionsPerModel.push(captionsPerModelInstance);
           }
-          // console.log(captionsPerModel);
 
           const captionsDataInput = await contractsCtx.contracts[
             "submitReview"
@@ -57,7 +53,6 @@ function ReviewPage() {
               );
             }
           }
-          // console.log(captionsPerModel);
           setIsLoading(false);
           setLoadedCaptions(captionsPerModel);
         } catch (error) {
@@ -106,10 +101,6 @@ function ReviewPage() {
         capsPerModel={loadedCaptions}
         onReviewCaption={ReviewCaptionHandler}
       />
-      {/* <ReviewCaptionList
-        captions={loadedCaptions}
-        onReviewCaption={ReviewCaptionHandler}
-      /> */}
     </div>
   );
 }
