@@ -1,4 +1,4 @@
-.modal h2{
+.modal h2 {
   margin-top: 0rem;
   text-align: center;
 }
@@ -8,9 +8,9 @@
   cursor: default;
 }
 
-.modal label{
-    color: rgb(128, 128, 128);
-    font-style: italic;
+.modal label {
+  color: rgb(128, 128, 128);
+  font-style: italic;
 }
 
 .modal {
@@ -26,4 +26,3 @@
   top: 30vh;
   left: calc(50% - 15rem);
 }
-

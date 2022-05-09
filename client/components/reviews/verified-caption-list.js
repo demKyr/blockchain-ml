@@ -1,9 +1,14 @@
 import VerifiedCaption from "./verified-caption";
+import ModalComponent from "./subcomponents/modal-component";
+
 
 function VerifiedCaptionList(props) {
   return (
     <ul>
-      <h2>{props.myName}</h2>
+      <ModalComponent
+        myName={props.myName}
+        myDescription={props.myDescription}
+      />
       {!props.myCaptions.length && (
         <p className="noOutputMsg">No captions available for this model</p>
       )}
