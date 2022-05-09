@@ -21,7 +21,7 @@ function ModalComponent(props) {
       {/* <h2 onClick={openModalHandler}>{props.myName}</h2> */}
       <div className={classes.row}>
         <h2>{props.myName}</h2>
-        <img src="./info.png" alt="(info)" onClick={openModalHandler} />
+        <img src="./infoIcon.png" alt="(info)" onClick={openModalHandler} />
       </div>
 
       {modalIsOpen && (
