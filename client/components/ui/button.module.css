@@ -2,8 +2,8 @@
   text-decoration: none;
   cursor: pointer;
   font: inherit;
-  background-color: #150734;
-  border: 3px solid #150734;
+  background-color: var(--primaryColor);
+  border: 3px solid var(--primaryColor);
   border-radius: 6px;
   color: #dafff7;
   padding: 0.5rem 1.5rem;
@@ -13,6 +13,8 @@
 
 .btn:hover,
 .btn:active {
-  background-color: #00ABE1;
-  border-color: #150734;
+  background-color: var(--secondaryColor);
+  border-color: var(--primaryColor);
+  /* background-color: #00ABE1;
+  border-color: #150734; */
 }

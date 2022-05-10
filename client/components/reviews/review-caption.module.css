@@ -1,8 +1,8 @@
 .form {
   margin: 1rem auto;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 4px var(--boxShadowColor);
   padding: 1rem;
-  background-color: white;
+  background-color: var(--formColor);
   border-radius: 6px;
   width: 90%;
   max-width: 80rem;
@@ -10,9 +10,6 @@
   justify-content: space-between;
   flex-direction: column;
   gap: 1rem;
-  /* position: absolute;
-  top: 50%;
-  left: auto; */
 }
 
 .controls {
@@ -27,12 +24,7 @@
   display: flex;
   gap: 1rem;
   align-items: center;
-  /* justify-content: space-between; */
 }
-
-/* .mainControl label {
-  font-weight: bold;
-} */
 
 .secondaryControl {
   flex: 1;
@@ -42,22 +34,18 @@
   justify-content: space-between;
 }
 
-/* .secondaryControl label {
-  font-weight: bold;
-} */
-
 .secondaryControl select {
+  color: var(--textColor);
   font: inherit;
-  background-color: white;
+  background-color: var(--inputBoxColor);
   border-radius: 6px;
   /* width: 30%; */
   padding: 0.25rem;
 }
 
-
 .form input {
   font: inherit;
-  background-color: white;
+  background-color: var(--inputBoxColor);
   border-radius: 6px;
   width: 100%;
   padding: 0.25rem;
@@ -69,7 +57,6 @@
   }
 
   .controls {
-    /* width: 100%; */
     flex-direction: row;
   }
 

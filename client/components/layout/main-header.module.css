@@ -4,9 +4,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #150734;
+  background-color: var(--primaryColor);
   padding: 0 10%;
-  /* position: fixed;  */
   position: sticky;
   top: 0;
 }
@@ -32,7 +31,7 @@
 .header a {
   text-decoration: none;
   font-size: 1.5rem;
-  color: #00ABE1;
+  color: var(--secondaryColor);
 }
 
 .selectedTab a{

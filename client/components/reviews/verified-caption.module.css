@@ -1,8 +1,8 @@
 .goodDataForm {
-  background-color: rgb(204, 245, 192);
-  border: 3px solid #150734;
+  background-color: var(--goodDataColor);
+  border: 3px solid var(--primaryColor);
   margin: 1rem auto;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 4px var(--boxShadowColor);
   padding: 1rem;
   border-radius: 6px;
   width: 90%;
@@ -14,10 +14,10 @@
 }
 
 .badDataForm {
-  background-color: rgb(243, 202, 171);
-  border: 3px solid #150734;
+  background-color: var(--badDataColor);
+  border: 3px solid var(--primaryColor);
   margin: 1rem auto;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 4px var(--boxShadowColor);
   padding: 1rem;
   border-radius: 6px;
   width: 90%;
