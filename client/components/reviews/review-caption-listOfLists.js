@@ -1,7 +1,12 @@
+import { Fragment } from "react";
 import ReviewCaptionList from "./review-caption-list";
 
-function ReviewCaptionListOfLists(props){
-    return (
+function ReviewCaptionListOfLists(props) {
+  return (
+    <Fragment>
+      {!props.capsPerModel.length && (
+        <p className="noOutputMsg">No available captions</p>
+      )}
       <ul>
         {props.capsPerModel.map((model) => (
           <ReviewCaptionList
@@ -15,7 +20,8 @@ function ReviewCaptionListOfLists(props){
           />
         ))}
       </ul>
-    );
+    </Fragment>
+  );
 }
 
 export default ReviewCaptionListOfLists;
