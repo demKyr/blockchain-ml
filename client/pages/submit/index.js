@@ -4,6 +4,7 @@ import { useState, useContext, useRef, useEffect } from "react";
 
 import ContractsContext from "../../store/contract-context";
 import SubmitCaptionList from "../../components/reviews/submit-caption-list";
+import { CaptionCost } from "../../constants/parameters";
 
 function SubmitPage() {
   const { activate, active, library: provider } = useWeb3React();
@@ -47,7 +48,7 @@ function SubmitPage() {
     if (active) {
       try {
         await contractsCtx.contracts["submitReview"].addCaption(caption, lbl, modelId, {
-          value: ethers.utils.parseEther("0.01"),
+          value: ethers.utils.parseEther(CaptionCost),
         });
       } catch (error) {
         console.log(error);

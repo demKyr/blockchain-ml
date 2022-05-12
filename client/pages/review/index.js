@@ -4,6 +4,7 @@ import { useState, useContext, useRef, useEffect } from "react";
 
 import ContractsContext from "../../store/contract-context";
 import ReviewCaptionListOfLists from "../../components/reviews/review-caption-listOfLists";
+import { ReviewCost } from "../../constants/parameters";
 
 function ReviewPage() {
   const { activate, active, library: provider } = useWeb3React();
@@ -74,7 +75,7 @@ function ReviewPage() {
           lbl,
           modelId,
           {
-            value: ethers.utils.parseEther("0.001"),
+            value: ethers.utils.parseEther(ReviewCost),
           }
         );
       } catch (error) {

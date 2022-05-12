@@ -4,6 +4,7 @@ import { useState, useContext, useRef } from "react";
 
 import ContractsContext from "../../store/contract-context";
 import RequestModel from "../../components/reviews/request-model";
+import { ModelCost } from "../../constants/parameters";
 
 function RequestPage() {
   const { activate, active, library: provider } = useWeb3React();
@@ -26,7 +27,7 @@ function RequestPage() {
           NumOfCaptions,
           labelsArray,
           {
-            value: ethers.utils.parseEther("1"),
+            value: ethers.utils.parseEther(ModelCost),
           }
         );
       } catch (error) {

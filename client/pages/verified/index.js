@@ -2,7 +2,6 @@ import { useWeb3React } from "@web3-react/core";
 import { useState, useContext, useRef, useEffect } from "react";
 
 import ContractsContext from "../../store/contract-context";
-import VerifiedCaptionList from "../../components/reviews/verified-caption-list";
 import VerifiedCaptionListOfLists from "../../components/reviews/verified-caption-listOfLists";
 
 function VerifyPage() {
