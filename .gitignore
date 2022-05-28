@@ -35,3 +35,6 @@ yarn-error.log*
 odigies.txt
 theoritika.txt
 datasets
+odigos2021.docx
+client/public/NeuralNetwork/BERTModel/config.json
+client/public/NeuralNetwork/BERTModel/tf_model.h5
