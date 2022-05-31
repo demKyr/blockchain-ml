@@ -1,7 +1,97 @@
+import { useWeb3React } from "@web3-react/core";
+import { ethers } from "ethers";
+import { useState, useContext, useRef, useEffect } from "react";
+
+import ContractsContext from "../../store/contract-context";
+import PredictCaptionList from "../../components/reviews/predict-caption-list";
+// import { CaptionCost } from "../../constants/parameters";
+
 function PredictPage() {
+  const { activate, active, library: provider } = useWeb3React();
+  const contractsCtx = useContext(ContractsContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadedModels, setLoadedModels] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      if (active) {
+        setIsLoading(true);
+        try {
+          const modelsData = [];
+          const modelsDataInput = await contractsCtx.contracts[
+            "submitReview"
+          ].getModels();
+          for (const key in modelsDataInput) {
+            const modelData = {
+              key: key,
+              id: parseInt(modelsDataInput[key][0]),
+              name: modelsDataInput[key][1],
+              description: modelsDataInput[key][2],
+              labels: modelsDataInput[key][5],
+            };
+            modelsData.push(modelData);
+          }
+          setIsLoading(false);
+          setLoadedModels(modelsData);
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        document.getElementById("executeButton").innerHTML =
+          "Please install Metamask";
+      }
+    }
+    fetchData();
+  }, []);
+
+  // async function SubmitCaptionHandler(caption, lbl, modelId) {
+  //   if (active) {
+  //     try {
+  //       await contractsCtx.contracts["submitReview"].addCaption(
+  //         caption,
+  //         lbl,
+  //         modelId,
+  //         {
+  //           value: ethers.utils.parseEther(CaptionCost),
+  //         }
+  //       );
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   } else {
+  //     document.getElementById("executeButton").innerHTML =
+  //       "Please install Metamask";
+  //   }
+  // }
+
+  async function PredictCaptionHandler(caption, modelId){
+    if (active) {
+      try {
+        console.log(caption, modelId);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      document.getElementById("executeButton").innerHTML =
+        "Please install Metamask";
+    }
+  }
+
+  if (isLoading) {
+    return (
+      <section>
+        <p>Loading...</p>
+      </section>
+    );
+  }
+
   return (
     <div>
-      <h1>This is the prediction page</h1>
+      <h1 className="instruction">Predict label for a caption</h1>
+      <PredictCaptionList
+        models={loadedModels}
+        onPredictCaption={PredictCaptionHandler}
+      />
     </div>
   );
 }

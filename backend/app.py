@@ -166,7 +166,6 @@ def trainFun():
     trainSetInput = request.json
     trainDF = pd.DataFrame(trainSetInput)
     trainDF.columns = ['DATA_COLUMN', 'LABEL_COLUMN']
-    print(trainDF)
     trainModel(loadedModel,tokenizer,validation,trainDF)
     return 'ok'
 # Header:
