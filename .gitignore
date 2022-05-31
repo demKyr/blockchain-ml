@@ -38,3 +38,7 @@ datasets
 odigos2021.docx
 client/public/NeuralNetwork/BERTModel/config.json
 client/public/NeuralNetwork/BERTModel/tf_model.h5
+odigiesFlask.txt
+backend/__pycache__/
+backend/env
+backend/NeuralNetwork/BERTModel/
