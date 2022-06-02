@@ -1,4 +1,5 @@
-from flask import Flask, redirect, request, redirect
+from flask import Flask, redirect, request, jsonify
+from flask_cors import CORS
 
 import tensorflow as tf
 import pandas as pd
@@ -147,6 +148,9 @@ def testModel(loadedModel,tokenizer,pred_sentences):
 
 
 app = Flask(__name__)
+# CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
+app.config["CORS_HEADERS"]='Content-Type'
 
 loadedModel,tokenizer,test,validation = loadModel()
 
@@ -160,8 +164,9 @@ def index():
         return "world"
 
 
-@app.route('/train')
+@app.route('/train', methods=['POST', 'GET'])
 def trainFun():
+    # if (request.method == 'POST'):
     print('Starting Training')
     trainSetInput = request.json
     trainDF = pd.DataFrame(trainSetInput)
@@ -183,18 +188,21 @@ def evaluateFun():
     print('Starting Evaluation')
     eval = evaluateModel(loadedModel,tokenizer,test)
     [loss,acc] = eval
-    res_body = {
-        "loss": loss,
-        "acc" : acc
-    }
-    return res_body
+
+    response = jsonify(loss=loss,acc=acc)
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 
-@app.route('/test')
+@app.route('/test', methods=['POST'])
 def testFun():
     print('Starting Testing')
     pred_sent = request.json['caption']
-    return testModel(loadedModel,tokenizer,pred_sent)
+    pred = testModel(loadedModel,tokenizer,pred_sent)
+
+    response = jsonify(prediction=pred)
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 # Header:
 # 'Content-Type': 'application/json' 
 # Body:
