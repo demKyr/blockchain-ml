@@ -10,7 +10,7 @@ function SubmitCaptionList(props) {
       <ul>
         {props.models.map((model) => (
           <SubmitCaption
-            myKey={model.myKey}
+            key={model.key}
             myName={model.name}
             myDescription={model.description}
             myLabels={model.labels}

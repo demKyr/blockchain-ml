@@ -11,7 +11,7 @@ function VerifiedCaptionListOfLists(props) {
       <ul>
         {props.capsPerModel.map((model) => (
           <VerifiedCaptionList
-            myKey={model.key}
+            key={model.key}
             myName={model.name}
             myDescription={model.description}
             myLabels={model.labels}

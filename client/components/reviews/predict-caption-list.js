@@ -10,7 +10,7 @@ function PredictCaptionList(props) {
       <ul>
         {props.models.map((model) => (
           <PredictCaption
-            myKey={model.myKey}
+            key={model.key}
             myName={model.name}
             myDescription={model.description}
             myLabels={model.labels}

@@ -14,7 +14,7 @@ function VerifiedCaptionList(props) {
       )}
       {props.myCaptions.map((caption) => (
         <VerifiedCaption
-          myKey={caption.id}
+          key={caption.id}
           myCaption={caption.content}
           myProposedLbl={caption.proposedLbl}
           myVerifiedLbl={caption.verifiedLbl}

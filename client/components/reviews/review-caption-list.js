@@ -13,6 +13,7 @@ function ReviewCaptionList(props) {
       )}
       {props.myCaptions.map((caption) => (
         <ReviewCaption
+          key={caption.id}
           myCaption={caption.content}
           myId={caption.id}
           myModelId={props.myModelId}

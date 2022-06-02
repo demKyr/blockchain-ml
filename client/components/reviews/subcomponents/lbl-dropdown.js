@@ -7,7 +7,7 @@ function LblDropdown(props) {
         -- select an option --
       </option>
       {props.labels.map((lbl, idx) => (
-        <option value={idx}>{lbl}</option>
+        <option value={idx} key={idx}>{lbl}</option>
       ))}
     </Fragment>
   );
