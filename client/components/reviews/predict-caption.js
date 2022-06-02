@@ -1,19 +1,47 @@
 import { useRef, useState } from "react";
+import { useWeb3React } from "@web3-react/core";
 
 import Button from "../ui/button";
 import classes from "./predict-caption.module.css";
 import ModalComponent from "./subcomponents/modal-component";
+import { APIpath } from "../../constants/parameters";
 
 function PredictCaption(props) {
   const captionInputRef = useRef();
+  const { activate, active, library: provider } = useWeb3React();
+  const [data, setData] = useState(null);
 
   function submitHandler(event) {
     event.preventDefault();
 
     const givenCaption = captionInputRef.current.value;
 
-    if ( givenCaption.length > 0) {
-      props.onPredictCaption(givenCaption, props.myId);
+    if (givenCaption.length > 0) {
+      // props.onPredictCaption(givenCaption, props.myId);
+
+      if (active) {
+        try {
+          const reqOptions = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify({ caption: givenCaption }),
+          };
+
+          fetch(APIpath + "/test", reqOptions)
+            .then((res) => res.json())
+            .then((contents) => {
+              setData(contents["prediction"]);
+            });
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        document.getElementById("executeButton").innerHTML =
+          "Please install Metamask";
+      }
     }
   }
 
@@ -34,8 +62,7 @@ function PredictCaption(props) {
           </div>
 
           <div className={classes.secondaryControl}>
-            <label htmlFor="lbl">Prediction</label>
-            <label htmlFor="prediction">Positive</label>
+            {data && <label htmlFor="prediction" id={classes.prediction}>{data}</label>}
           </div>
         </div>
       </form>
