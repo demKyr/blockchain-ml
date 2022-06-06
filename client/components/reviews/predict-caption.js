@@ -17,16 +17,15 @@ function PredictCaption(props) {
     const givenCaption = captionInputRef.current.value;
 
     if (givenCaption.length > 0) {
-      // props.onPredictCaption(givenCaption, props.myId);
 
       if (active) {
         try {
           const reqOptions = {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Access-Control-Allow-Origin": "*",
-            },
+            // mode: "cors",
+            // headers: {
+            // "Content-Type": "application/json",
+            // },
             body: JSON.stringify({ caption: givenCaption }),
           };
 
@@ -62,7 +61,11 @@ function PredictCaption(props) {
           </div>
 
           <div className={classes.secondaryControl}>
-            {data && <label htmlFor="prediction" id={classes.prediction}>{data}</label>}
+            {data && (
+              <label htmlFor="prediction" id={classes.prediction}>
+                {data}
+              </label>
+            )}
           </div>
         </div>
       </form>
