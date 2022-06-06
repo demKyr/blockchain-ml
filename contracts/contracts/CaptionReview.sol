@@ -19,6 +19,7 @@ contract CaptionReview {
         bool verified;
         address providerAddr;
         address[] voters;
+        bool trained;
     }
 
     struct ModelInfo{
@@ -29,6 +30,7 @@ contract CaptionReview {
         uint256 NumberOfCaptions;
         string[] labels;
         address modelProviderAddr;
+        uint256[] accuracy;
     }
 
     Caption[] captions;
@@ -42,13 +44,13 @@ contract CaptionReview {
     function addModel(string memory _name, string memory _description, uint _NumOfVotes, uint _NumOfCaptions, string[] memory labels) external payable{
         require(msg.value >= modelCost,"Not enough eth");
         require(_NumOfVotes > 0 && _NumOfCaptions > 0,"Invalid Number of Votes or Captions");
-        models.push(ModelInfo(models.length, _name, _description, _NumOfVotes, _NumOfCaptions, labels, msg.sender));
+        models.push(ModelInfo(models.length, _name, _description, _NumOfVotes, _NumOfCaptions, labels, msg.sender, new uint[](0)));
     }
 
     function addCaption(string memory _caption, uint8 _lbl, uint _modelId) external payable{
         require(msg.value >= captionCost,"Not enough eth");
         require(_lbl >= 0 && _lbl < models[_modelId].labels.length,"Invalid label");
-        captions.push(Caption(_caption, _modelId, _lbl, _lbl, new uint8[](models[_modelId].labels.length), false, msg.sender, new address[](0)));
+        captions.push(Caption(_caption, _modelId, _lbl, _lbl, new uint8[](models[_modelId].labels.length), false, msg.sender, new address[](0), false));
         captionCnt += 1;
     }
 
@@ -104,6 +106,16 @@ contract CaptionReview {
 
     function getCaptionCnt() public view returns (uint){
         return(captionCnt);
+    }
+
+    function updateCaptionTrainStatus(uint[] memory _usedCaptions) public {
+        for(uint i = 0; i < _usedCaptions.length ; i++){
+            captions[_usedCaptions[i]].trained = true;
+        }
+    }
+
+    function addAccuracy(uint _idx, uint _acc) public{
+        models[_idx].accuracy.push(_acc);
     }
 
 }
