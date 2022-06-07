@@ -54,6 +54,9 @@ function VerifiedCaptionList(props) {
 
     if (active) {
       try {
+        alert(
+          "Training has started!\n\nPlease wait until Metamask windows appear to verify the training\n\nDo not leave the page!"
+        );
         let trainData = props.myCaptions;
         // Create request for Training
         const reqOptions = {
