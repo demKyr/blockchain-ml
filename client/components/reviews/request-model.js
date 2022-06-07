@@ -7,7 +7,7 @@ function RequestModel(props) {
   const nameInputRef = useRef();
   const descriptionInputRef = useRef();
   const NumOfVotesInputRef = useRef();
-  const NumOfCaptionsInputRef = useRef();
+  const initialAccInputRef = useRef();
   const labelsInputRef = useRef();
 
   function submitHandler(event) {
@@ -16,15 +16,15 @@ function RequestModel(props) {
     const givenName = nameInputRef.current.value;
     const givenDescription = descriptionInputRef.current.value;
     const givenNumOfVotes = NumOfVotesInputRef.current.value;
-    const givenNumOfCaptions = NumOfCaptionsInputRef.current.value;
+    const givenInitialAcc = initialAccInputRef.current.value;
     const givenlabels = labelsInputRef.current.value;
 
-    if (!isNaN(+givenNumOfVotes) && !isNaN(+givenNumOfCaptions)) {
+    if (!isNaN(+givenNumOfVotes) && !isNaN(+givenInitialAcc)) {
       props.onRequestModel(
         givenName,
         givenDescription,
         givenNumOfVotes,
-        givenNumOfCaptions,
+        givenInitialAcc,
         givenlabels
       );
     }
@@ -60,19 +60,19 @@ function RequestModel(props) {
         </div>
 
         <div className={classes.mainControl}>
-          <label htmlFor="NumOfCaptions">Number of Captions requested</label>
+          <label htmlFor="initialAcc">Initial Accuracy of the model (range [0,1])</label>
           <input
             type="text"
             required
-            id="NumOfCaptions"
-            ref={NumOfCaptionsInputRef}
+            id="initialAcc"
+            ref={initialAccInputRef}
           />
         </div>
 
         <div className={classes.mainControl}>
           <label htmlFor="labels">Labels</label>
           <textarea
-            placeholder="Give the labels for the requested captions separated with commas and without spaces or quotes (eg positive,negative,neutral)"
+            placeholder="Give the labels for the requested captions separated with commas and without spaces or quotes (eg Positive,Negative,Neutral)"
             required
             id="labels"
             rows="5"

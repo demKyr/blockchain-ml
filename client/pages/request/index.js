@@ -14,17 +14,20 @@ function RequestPage() {
     name,
     description,
     NumOfVotes,
-    NumOfCaptions,
+    initialAcc,
     labels
   ) {
     if (active) {
       try {
+        let initialAccInt = parseInt(initialAcc * 100000);
+        let NumOfCaptions = 100;
         const labelsArray = labels.split(",");
         await contractsCtx.contracts["submitReview"].addModel(
           name,
           description,
           NumOfVotes,
           NumOfCaptions,
+          initialAccInt,
           labelsArray,
           {
             value: ethers.utils.parseEther(ModelCost),
