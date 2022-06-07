@@ -11,19 +11,19 @@ function MainHeader() {
       </div>
       <nav>
         <ul>
-          <li className={localPathname == "/request" && classes.selectedTab}>
+          <li className={(localPathname == "/request") ? classes.selectedTab : classes.nonSelectedTab}>
             <Link href="/request">Request</Link>
           </li>
-          <li className={localPathname == "/submit" && classes.selectedTab}>
+          <li className={(localPathname == "/submit") ? classes.selectedTab : classes.nonSelectedTab}>
             <Link href="/submit">Submit</Link>
           </li>
-          <li className={localPathname == "/review" && classes.selectedTab}>
+          <li className={(localPathname == "/review") ? classes.selectedTab : classes.nonSelectedTab}>
             <Link href="/review">Review</Link>
           </li>
-          <li className={localPathname == "/verified" && classes.selectedTab}>
+          <li className={(localPathname == "/verified") ? classes.selectedTab : classes.nonSelectedTab}>
             <Link href="/verified">Verified</Link>
           </li>
-          <li className={localPathname == "/predict" && classes.selectedTab}>
+          <li className={(localPathname == "/predict") ? classes.selectedTab : classes.nonSelectedTab}>
             <Link href="/predict">Predict</Link>
           </li>
         </ul>
