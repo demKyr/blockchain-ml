@@ -19,9 +19,10 @@ contract("CaptionReview", (accounts) => {
       "Tweets categorized according to their content (eg This is a good tweet -> positive)";
     let NumOfVotes = 3;
     let NumOfCaptions = 100;
+    let initialAcc = 98765;
     let labels = ["positive", "negative", "neutral"];
     return reviewsInstance
-      .addModel(name, description, NumOfVotes, NumOfCaptions, labels, {
+      .addModel(name, description, NumOfVotes, NumOfCaptions, initialAcc, labels, {
         from: accounts[1],
         value: 1e18,
       })

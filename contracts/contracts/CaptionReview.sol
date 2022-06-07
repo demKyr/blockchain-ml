@@ -41,10 +41,11 @@ contract CaptionReview {
         chairperson = msg.sender;
     }
 
-    function addModel(string memory _name, string memory _description, uint _NumOfVotes, uint _NumOfCaptions, string[] memory labels) external payable{
+    function addModel(string memory _name, string memory _description, uint _NumOfVotes, uint _NumOfCaptions, uint _initialAcc, string[] memory labels) external payable{
         require(msg.value >= modelCost,"Not enough eth");
         require(_NumOfVotes > 0 && _NumOfCaptions > 0,"Invalid Number of Votes or Captions");
         models.push(ModelInfo(models.length, _name, _description, _NumOfVotes, _NumOfCaptions, labels, msg.sender, new uint[](0)));
+        models[(models.length)-1].accuracy.push(_initialAcc);
     }
 
     function addCaption(string memory _caption, uint8 _lbl, uint _modelId) external payable{

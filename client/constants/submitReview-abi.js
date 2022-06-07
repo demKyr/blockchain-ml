@@ -42,6 +42,11 @@ module.exports = {
           "type": "uint256"
         },
         {
+          "internalType": "uint256",
+          "name": "_initialAcc",
+          "type": "uint256"
+        },
+        {
           "internalType": "string[]",
           "name": "labels",
           "type": "string[]"
