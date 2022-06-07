@@ -15,9 +15,9 @@
   --textColor: #000000;
   --formColor: #ffffff;
   --inputBoxColor: #ffffff;
-  --goodDataColor: rgb(204, 245, 192);
-  --badDataColor: rgb(243, 202, 171); 
-  --boxShadowColor: rgba(0, 0, 0, 0.2);
+  --goodDataColor: #ccf5c0;
+  --badDataColor: #f3caab; 
+  --boxShadowColor: #00000033;
 }
 
 html,
