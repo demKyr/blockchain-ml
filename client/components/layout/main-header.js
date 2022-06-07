@@ -26,6 +26,9 @@ function MainHeader() {
           <li className={(localPathname == "/predict") ? classes.selectedTab : classes.nonSelectedTab}>
             <Link href="/predict">Predict</Link>
           </li>
+          <li className={(localPathname == "/evaluation") ? classes.selectedTab : classes.nonSelectedTab}>
+            <Link href="/evaluation">Evaluation</Link>
+          </li>
         </ul>
       </nav>
     </header>
