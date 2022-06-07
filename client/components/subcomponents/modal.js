@@ -1,4 +1,4 @@
-import Button from "../../ui/button";
+import Button from "../ui/button";
 import classes from "./modal.module.css";
 
 function Modal(props) {

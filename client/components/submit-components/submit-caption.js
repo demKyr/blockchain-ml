@@ -2,8 +2,8 @@ import { useRef, useState } from "react";
 
 import Button from "../ui/button";
 import classes from "./submit-caption.module.css";
-import LblDropdown from "./subcomponents/lbl-dropdown";
-import ModalComponent from "./subcomponents/modal-component";
+import LblDropdown from "../subcomponents/lbl-dropdown";
+import ModalComponent from "../subcomponents/modal-component";
 
 function SubmitCaption(props) {
   const captionInputRef = useRef();

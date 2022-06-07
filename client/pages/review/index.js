@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import { useState, useContext, useRef, useEffect } from "react";
 
 import ContractsContext from "../../store/contract-context";
-import ReviewCaptionListOfLists from "../../components/reviews/review-caption-listOfLists";
+import ReviewCaptionListOfLists from "../../components/review-components/review-caption-listOfLists";
 import { ReviewCost } from "../../constants/parameters";
 
 function ReviewPage() {

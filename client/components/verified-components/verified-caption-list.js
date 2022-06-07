@@ -6,7 +6,7 @@ import ContractsContext from "../../store/contract-context";
 import { APIpath } from "../../constants/parameters";
 import Button from "../ui/button";
 import VerifiedCaption from "./verified-caption";
-import ModalComponent from "./subcomponents/modal-component";
+import ModalComponent from "../subcomponents/modal-component";
 import classes from "./verified-caption-list.module.css";
 
 function VerifiedCaptionList(props) {

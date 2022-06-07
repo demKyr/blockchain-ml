@@ -2,7 +2,8 @@ import { useWeb3React } from "@web3-react/core";
 import { useState, useContext, useRef, useEffect } from "react";
 
 import ContractsContext from "../../store/contract-context";
-import VerifiedCaptionListOfLists from "../../components/reviews/verified-caption-listOfLists";
+import VerifiedCaptionListOfLists from "../../components/verified-components/verified-caption-listOfLists";
+
 
 function VerifyPage() {
   const { activate, active, library: provider } = useWeb3React();

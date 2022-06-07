@@ -2,7 +2,8 @@ import { useRef } from "react";
 
 import Button from "../ui/button";
 import classes from "./review-caption.module.css";
-import LblDropdown from "./subcomponents/lbl-dropdown";
+import LblDropdown from "../subcomponents/lbl-dropdown";
+
 
 function ReviewCaption(props) {
   const lblInputRef = useRef();

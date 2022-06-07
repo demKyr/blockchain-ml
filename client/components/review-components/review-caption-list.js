@@ -1,5 +1,5 @@
 import ReviewCaption from "./review-caption";
-import ModalComponent from "./subcomponents/modal-component";
+import ModalComponent from "../subcomponents/modal-component";
 
 function ReviewCaptionList(props) {
   return (

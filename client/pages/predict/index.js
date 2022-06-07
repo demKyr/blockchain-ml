@@ -2,7 +2,7 @@ import { useWeb3React } from "@web3-react/core";
 import { useState, useContext, useRef, useEffect } from "react";
 
 import ContractsContext from "../../store/contract-context";
-import PredictCaptionList from "../../components/reviews/predict-caption-list";
+import PredictCaptionList from "../../components/predict-components/predict-caption-list";
 
 function PredictPage() {
   const { activate, active, library: provider } = useWeb3React();

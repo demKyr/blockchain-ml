@@ -3,7 +3,7 @@ import { useWeb3React } from "@web3-react/core";
 
 import Button from "../ui/button";
 import classes from "./predict-caption.module.css";
-import ModalComponent from "./subcomponents/modal-component";
+import ModalComponent from "../subcomponents/modal-component";
 import { APIpath } from "../../constants/parameters";
 
 function PredictCaption(props) {

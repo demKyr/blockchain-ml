@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import { useState, useContext, useRef, useEffect } from "react";
 
 import ContractsContext from "../../store/contract-context";
-import SubmitCaptionList from "../../components/reviews/submit-caption-list";
+import SubmitCaptionList from "../../components/submit-components/submit-caption-list";
 import { CaptionCost } from "../../constants/parameters";
 
 function SubmitPage() {
