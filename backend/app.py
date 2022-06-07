@@ -1,5 +1,7 @@
-from flask import Flask, redirect, request, jsonify
-from flask_cors import CORS
+from flask import Flask, jsonify, request, Response
+from flask_cors import CORS, cross_origin
+
+import json
 
 import tensorflow as tf
 import pandas as pd
@@ -8,6 +10,9 @@ from sklearn.model_selection import train_test_split
 from transformers import BertTokenizer, TFBertForSequenceClassification
 from transformers import InputExample, InputFeatures
 
+
+ 
+
 def loadModel():
     # ## Load the BERT Classifier and Tokenizer along with Input modules
     tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
@@ -15,11 +20,15 @@ def loadModel():
     # ## Load CSV, test and validation datasets
     test = pd.read_csv('./NeuralNetwork/test.csv')
     validation = pd.read_csv('./NeuralNetwork/validation.csv')
+    # test = pd.read_csv('/content/gdrive/MyDrive/Colab Notebooks/Thesis/test.csv')
+    # validation = pd.read_csv('/content/gdrive/MyDrive/Colab Notebooks/Thesis/validation.csv')
     test = test.iloc[: , 1:]
     validation = validation.iloc[: , 1:]
 
     model_save_name = 'BERTModel'
     path = F"./NeuralNetwork/{model_save_name}" 
+    # model_save_name = 'BERTModel1(2022-05-21 10:34)'
+    # path = F"/content/gdrive/MyDrive/Colab_Notebooks/savedModels/{model_save_name}" 
     loaded_model = TFBertForSequenceClassification.from_pretrained(path, local_files_only=True)
     # loaded_model.summary()
 
@@ -109,6 +118,8 @@ def trainModel(loadedModel,tokenizer,validation,train):
 
     model_save_name = 'BERTModel'
     path = F"./NeuralNetwork/{model_save_name}" 
+    # model_save_name = 'BERTModel1(2022-05-21 10:34)'
+    # path = F"/content/gdrive/MyDrive/Colab_Notebooks/savedModels/{model_save_name}" 
     loadedModel.save_pretrained(path)
 
     return loadedModel
@@ -130,10 +141,6 @@ def evaluateModel(loadedModel,tokenizer,test):
     return (evaluation)
 
 def testModel(loadedModel,tokenizer,pred_sentences):
-    # pred_sentences = ['Today was the best day ever!',
-    #                 'Do not talk to me, I am in a bad mood',
-    #                 'I do not live in Nicosia',
-    #                 'I am very optimistic for this effort']
 
     tf_batch = tokenizer(pred_sentences, max_length=128, padding=True, truncation=True, return_tensors='tf')
     tf_outputs = loadedModel(tf_batch)
@@ -141,47 +148,35 @@ def testModel(loadedModel,tokenizer,pred_sentences):
     labels = ['Positive','Negative','Neutral']
     label = tf.argmax(tf_predictions, axis=1)
     label = label.numpy()
-    # for i in range(len(pred_sentences)):
-    #     print(pred_sentences[i], ": \n", labels[label[i]])
     return labels[label[0]]
 
 
-
 app = Flask(__name__)
-# CORS(app)
-CORS(app, resources={r"/*": {"origins": "*"}})
-app.config["CORS_HEADERS"]='Content-Type'
+
+
+CORS(app)
+
 
 loadedModel,tokenizer,test,validation = loadModel()
 
-print('Server Running🚀')
 
-@app.route('/', methods=['POST', 'GET'])
-def index():
-    if (request.method == 'POST'):
-        return "hello"
-    else:
-        return "world"
-
-
-@app.route('/train', methods=['POST', 'GET'])
+@app.route('/train', methods=['POST'])
 def trainFun():
-    # if (request.method == 'POST'):
     print('Starting Training')
-    trainSetInput = request.json
+    # trainSetInput = request.json
+    trainSetInput = json.loads(request.data.decode('utf-8'))
+
     trainDF = pd.DataFrame(trainSetInput)
+    del trainDF['id']
+    del trainDF['proposedLbl']
+    del trainDF['goodData']
     trainDF.columns = ['DATA_COLUMN', 'LABEL_COLUMN']
     trainModel(loadedModel,tokenizer,validation,trainDF)
-    return 'ok'
-# Header:
-# 'Content-Type': 'application/json' 
-# Body:
-#[
-#     {"content": "This is a good caption", "verifiedLbl": 0},
-#     {"content": "Best day of my life", "verifiedLbl": 0 },
-#     {"content": "Worst day of my life", "verifiedLbl": 1}
-# ]
     
+    # response = Response(status=200)
+    response = jsonify(status="ok")
+    return response
+
 
 @app.route('/evaluate')
 def evaluateFun():
@@ -190,31 +185,27 @@ def evaluateFun():
     [loss,acc] = eval
 
     response = jsonify(loss=loss,acc=acc)
-    response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
 
 @app.route('/test', methods=['POST'])
 def testFun():
-    print('Starting Testing')
-    pred_sent = request.json['caption']
+
+    dataIn = json.loads(request.data.decode('utf-8'))
+    pred_sent = dataIn['caption']
+
+    # pred_sent = request.json['caption']
     pred = testModel(loadedModel,tokenizer,pred_sent)
 
     response = jsonify(prediction=pred)
-    response.headers.add("Access-Control-Allow-Origin", "*")
     return response
-# Header:
-# 'Content-Type': 'application/json' 
-# Body:
-# {
-#     "caption": ["Today was the worst day ever!"]
-# }
 
 
 
 
 if (__name__ == "__main__"):
-    app.run(debug=True)
+    print('Server Running🚀')
+    app.run()
 
 
 
