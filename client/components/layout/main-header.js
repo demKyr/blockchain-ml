@@ -20,11 +20,11 @@ function MainHeader() {
           <li className={(localPathname == "/review") ? classes.selectedTab : classes.nonSelectedTab}>
             <Link href="/review">Review</Link>
           </li>
-          <li className={(localPathname == "/verified") ? classes.selectedTab : classes.nonSelectedTab}>
-            <Link href="/verified">Verified</Link>
-          </li>
           <li className={(localPathname == "/predict") ? classes.selectedTab : classes.nonSelectedTab}>
             <Link href="/predict">Predict</Link>
+          </li>
+          <li className={(localPathname == "/verified") ? classes.selectedTab : classes.nonSelectedTab}>
+            <Link href="/verified">Train</Link>
           </li>
           <li className={(localPathname == "/evaluation") ? classes.selectedTab : classes.nonSelectedTab}>
             <Link href="/evaluation">Evaluation</Link>
