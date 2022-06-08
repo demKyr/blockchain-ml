@@ -11,9 +11,9 @@
 }
 
 .logo {
-  font-size: 2rem;
-  color: white;
-  font-weight: bold;
+  margin-top: 1rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 .header ul {
