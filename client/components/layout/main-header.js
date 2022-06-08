@@ -11,7 +11,7 @@ function MainHeader() {
         <Link href="/">
           <a>
             <Image
-              src="/Thesis_Logo_2.png"
+              src="/logo.png"
               alt="home"
               width="100"
               height="100"
