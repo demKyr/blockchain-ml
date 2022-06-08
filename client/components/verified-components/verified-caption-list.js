@@ -64,13 +64,13 @@ function VerifiedCaptionList(props) {
           body: JSON.stringify(trainData),
         };
         // Make API call for training
-        fetch(APIpath + "/train", reqOptions)
+        fetch(APIpath + "/train?model=" + props.myModelId, reqOptions)
           .then((res) => res.json())
           .then((contents) => {
             if (contents["status"] == "ok") {
               //Make API call for evaluation to receive loss and accuracy
               try {
-                fetch(APIpath + "/evaluate")
+                fetch(APIpath + "/evaluate?model=" + props.myModelId)
                   .then((res) => res.json())
                   .then((contents) => {
                     let acc = contents["acc"];

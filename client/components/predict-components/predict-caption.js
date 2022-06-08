@@ -29,7 +29,7 @@ function PredictCaption(props) {
             body: JSON.stringify({ caption: givenCaption }),
           };
 
-          fetch(APIpath + "/test", reqOptions)
+          fetch(APIpath + "/test?model=" + props.myId, reqOptions)
             .then((res) => res.json())
             .then((contents) => {
               setData(contents["prediction"]);
