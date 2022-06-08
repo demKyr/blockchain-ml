@@ -1,5 +1,5 @@
 module.exports = {
   contractAddresses: {
-    submitReview: "0x00bB5E3333A653371969CF13Caef359520b159d8",
+    submitReview: "0x8c13A39aA81f401736Bd0a3e16290384850453b6",
   },
 };
