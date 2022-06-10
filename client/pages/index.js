@@ -46,11 +46,16 @@ function HomePage() {
         <a
           href="https://huggingface.co/bert-base-uncased?text=Paris+is+the+%5BMASK%5D+of+France"
           target="_blank"
+          rel="noopener noreferrer"
         >
           pretrained model
         </a>{" "}
         by Hugging Face team based on{" "}
-        <a href="https://arxiv.org/abs/1810.04805" target="_blank">
+        <a
+          href="https://arxiv.org/abs/1810.04805"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           BERT
         </a>{" "}
         (Bidirectional Encoder Representations from Transformers) language
