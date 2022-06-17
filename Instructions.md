@@ -481,9 +481,7 @@ height="0.7291666666666666in"}
 generated](InstructionsScreenshots/media/image63.png){width="3.4895833333333335in"
 height="1.2793230533683289in"}
 
-> *Note: **Keep Google Colab running** when using DEMOS. If you are on
-> the free tier of Google Colab, use GPU runtime **only when you need
-> it** as it is limited.*
+*Note: **Keep Google Colab running** when using DEMOS. If you are on the free tier of Google Colab, use GPU runtime **only when you need it** as it is limited.*
 
 And that's it! We are all set! You can now use the DEMOS dApp
 
@@ -522,7 +520,7 @@ height="1.6427012248468942in"}
 
 ##### 63. Run local Flask server with command: flask run
 
-> *Note: You can stop the Flask server with ctrl + C*
+*Note: You can stop the Flask server with ctrl + C*
 
 Congratulations! Everything is set! You can now use the DEMOS dApp
 
@@ -579,8 +577,7 @@ height="3.3472222222222223in"}
 > generated](InstructionsScreenshots/media/image71.png){width="6.5in"
 > height="2.3493055555555555in"}
 >
-> *Note: An account can request data for a model and then submit such
-> data, but it doesn't make much sense. That's why we switch to Account 2*
+*Note: An account can request data for a model and then submit such data, but it doesn't make much sense. That's why we switch to Account 2*
 
 ##### 68. After submitting a few captions change to Account 3 and go to Review page. Review a caption by selecting a label. Then click Review Caption and confirm transaction
 
