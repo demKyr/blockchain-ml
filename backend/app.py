@@ -11,26 +11,25 @@ from transformers import BertTokenizer, TFBertForSequenceClassification
 from transformers import InputExample, InputFeatures
 
 
- 
+modelNames = ["BERTModel-Twitter", "BERTModel-IMDB", "BERTModel-Emotions"]
+labels = [['Positive','Negative','Neutral'], ['Negative','Positive'], ['Sadness', 'Anger', 'Love', 'Surprise', 'Fear', 'Happiness']]
 
-def loadModel():
+
+def loadModel(model_save_name):
+    path = F"./NeuralNetwork/{model_save_name}" 
+    testSetPath = F"./NeuralNetwork/{model_save_name}-test.csv"
+    validationSetPath = F"./NeuralNetwork/{model_save_name}-validation.csv"
+
     # ## Load the BERT Classifier and Tokenizer along with Input modules
     tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
 
     # ## Load CSV, test and validation datasets
-    test = pd.read_csv('./NeuralNetwork/test.csv')
-    validation = pd.read_csv('./NeuralNetwork/validation.csv')
-    # test = pd.read_csv('/content/gdrive/MyDrive/Colab Notebooks/Thesis/test.csv')
-    # validation = pd.read_csv('/content/gdrive/MyDrive/Colab Notebooks/Thesis/validation.csv')
+    test = pd.read_csv(testSetPath)
+    validation = pd.read_csv(validationSetPath)
     test = test.iloc[: , 1:]
     validation = validation.iloc[: , 1:]
 
-    model_save_name = 'BERTModel'
-    path = F"./NeuralNetwork/{model_save_name}" 
-    # model_save_name = 'BERTModel1(2022-05-21 10:34)'
-    # path = F"/content/gdrive/MyDrive/Colab_Notebooks/savedModels/{model_save_name}" 
     loaded_model = TFBertForSequenceClassification.from_pretrained(path, local_files_only=True)
-    # loaded_model.summary()
 
     return loaded_model,tokenizer,test,validation
 
@@ -89,14 +88,9 @@ def convert_examples_to_tf_dataset(examples, tokenizer, max_length=128):
         ),
     )
 
-def trainModel(loadedModel,tokenizer,validation,train):
-    # path = './NeuralNetwork/inputCsv.csv'
-    # train = pd.read_csv(path)
-    # train['sentiment'] = train['sentiment'].replace('positive', 0)
-    # train['sentiment'] = train['sentiment'].replace('negative', 1)
-    # train['sentiment'] = train['sentiment'].replace('neutral', 2)
-    # train.columns = ['DATA_COLUMN', 'LABEL_COLUMN']
-    # train
+def trainModel(loadedModel,tokenizer,validation,train,model_save_name):
+
+    path = F"./NeuralNetwork/{model_save_name}" 
 
     DATA_COLUMN = 'DATA_COLUMN'
     LABEL_COLUMN = 'LABEL_COLUMN'
@@ -116,10 +110,6 @@ def trainModel(loadedModel,tokenizer,validation,train):
 
     loadedModel.fit(train_data, epochs=2, validation_data=validation_data)
 
-    model_save_name = 'BERTModel'
-    path = F"./NeuralNetwork/{model_save_name}" 
-    # model_save_name = 'BERTModel1(2022-05-21 10:34)'
-    # path = F"/content/gdrive/MyDrive/Colab_Notebooks/savedModels/{model_save_name}" 
     loadedModel.save_pretrained(path)
 
     return loadedModel
@@ -140,29 +130,39 @@ def evaluateModel(loadedModel,tokenizer,test):
 
     return (evaluation)
 
-def testModel(loadedModel,tokenizer,pred_sentences):
+def testModel(loadedModel,tokenizer,pred_sentences,labels):
 
     tf_batch = tokenizer(pred_sentences, max_length=128, padding=True, truncation=True, return_tensors='tf')
     tf_outputs = loadedModel(tf_batch)
     tf_predictions = tf.nn.softmax(tf_outputs[0], axis=-1)
-    labels = ['Positive','Negative','Neutral']
+    # labels = ['Positive','Negative','Neutral']
     label = tf.argmax(tf_predictions, axis=1)
     label = label.numpy()
     return labels[label[0]]
 
+###################################################################################################################
 
 app = Flask(__name__)
 
 
 CORS(app)
 
+loadedModel = [None] * len(modelNames)
+tokenizer = [None] * len(modelNames)
+test = [None] * len(modelNames)
+validation = [None] * len(modelNames)
 
-loadedModel,tokenizer,test,validation = loadModel()
+for id,modelName in enumerate(modelNames):
+  print(id,modelName)
+  loadedModel[id],tokenizer[id],test[id],validation[id] = loadModel(modelName)
 
 
 @app.route('/train', methods=['POST'])
 def trainFun():
     print('Starting Training')
+    
+    modelId = int(request.args.get('model'))
+
     # trainSetInput = request.json
     trainSetInput = json.loads(request.data.decode('utf-8'))
 
@@ -171,7 +171,7 @@ def trainFun():
     del trainDF['proposedLbl']
     del trainDF['goodData']
     trainDF.columns = ['DATA_COLUMN', 'LABEL_COLUMN']
-    trainModel(loadedModel,tokenizer,validation,trainDF)
+    trainModel(loadedModel[modelId],tokenizer[modelId],validation[modelId],trainDF,modelNames[modelId])
     
     # response = Response(status=200)
     response = jsonify(status="ok")
@@ -181,7 +181,10 @@ def trainFun():
 @app.route('/evaluate')
 def evaluateFun():
     print('Starting Evaluation')
-    eval = evaluateModel(loadedModel,tokenizer,test)
+
+    modelId = int(request.args.get('model'))
+
+    eval = evaluateModel(loadedModel[modelId],tokenizer[modelId],test[modelId])
     [loss,acc] = eval
 
     response = jsonify(loss=loss,acc=acc)
@@ -191,11 +194,13 @@ def evaluateFun():
 @app.route('/test', methods=['POST'])
 def testFun():
 
+    modelId = int(request.args.get('model'))
+
     dataIn = json.loads(request.data.decode('utf-8'))
     pred_sent = dataIn['caption']
 
     # pred_sent = request.json['caption']
-    pred = testModel(loadedModel,tokenizer,pred_sent)
+    pred = testModel(loadedModel[modelId],tokenizer[modelId],pred_sent,labels[modelId])
 
     response = jsonify(prediction=pred)
     return response
