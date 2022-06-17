@@ -1,4 +1,4 @@
-Installation guide for DEMOS dApp
+# Installation guide for DEMOS dApp
 
 Note: This tutorial was created for Windows 10 however the same
 procedures apply for Linux and MacOS Operating Systems. DEMOS dApp was
@@ -8,19 +8,18 @@ Necessary Software you need to install before starting the tutorial:
 
 -   Google Account with Google Drive
 
--   Python 3 (<https://nodejs.org/en/download/>)
+-   [Python 3](https://nodejs.org/en/download/)
 
--   Node.js (<https://www.python.org/downloads/>)
+-   [Node.js](https://www.python.org/downloads/)
 
--   Truffle (<https://trufflesuite.com/ganache/>)
+-   [Truffle](https://trufflesuite.com/ganache/)
 
--   Metamask Extension for Google Chrome
-    (<https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn>)
+-   [Metamask Extension for Google Chrome](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn)
 
--   A Kaggle account (this is needed if you want to use a Kaggle
+-   [A Kaggle account](https://www.kaggle.com/) (this is needed if you want to use a Kaggle
     dataset. If you want to follow this tutorial until the end you need
     to create an account. You can create it using your Google Account)
-    (<https://www.kaggle.com/>)
+    
 
 1.  Clone or Download the files from
     https://gitlab.com/netmode/blockchain-ml.git . Main directory folder
@@ -30,7 +29,7 @@ Necessary Software you need to install before starting the tutorial:
 > confidence](InstructionsScreenshots/media/image1.png){width="6.5in"
 > height="1.1993055555555556in"}
 
-CHAPTER 1: INITIAL TRAINING
+## CHAPTER 1: INITIAL TRAINING
 
 > We start this tutorial with the initial training of the models we will
 > use. You don't strictly have to use these datasets or even models,
@@ -140,7 +139,7 @@ height="0.6531342957130358in"}
 generated](InstructionsScreenshots/media/image11.png){width="6.5in"
 height="4.665972222222222in"}
 
-CHAPTER 2: GANACHE SETUP
+## CHAPTER 2: GANACHE SETUP
 
 > Pretraining is done! Time to create a local Blockchain
 
@@ -208,7 +207,7 @@ height="2.073611111111111in"}
 
 Note: Always **Keep Ganache running** while running DEMOS
 
-CHAPTER 3: FRONTEND SETUP
+## CHAPTER 3: FRONTEND SETUP
 
 Local Blockchain is created! Let's deploy the frontend
 
@@ -341,7 +340,7 @@ Note 2: **Keep frontend running** when you are running DEMOS. You can
 terminate the deployment of the frontend by giving ctrl + C command in
 the terminal
 
-CHAPTER 4: METAMASK SETUP
+## CHAPTER 4: METAMASK SETUP
 
 Frontend is up and running! Time to connect Metamask so users can login
 and interact with DEMOS
@@ -500,7 +499,7 @@ Description automatically
 generated](InstructionsScreenshots/media/image58.png){width="1.7222222222222223in"
 height="2.89997375328084in"}
 
-CHAPTER 5: FLASK SERVER SETUP ON GOOGLE COLAB
+## CHAPTER 5: FLASK SERVER SETUP ON GOOGLE COLAB
 
 Blockchain accounts are connected to the frontend! Now it's time to set
 up the Flask server.
@@ -547,7 +546,7 @@ height="1.2793230533683289in"}
 
 And that's it! We are all set! You can now use the DEMOS dApp
 
-CHAPTER 6: FLASK SERVER SETUP LOCALLY
+## CHAPTER 6: FLASK SERVER SETUP LOCALLY
 
 > If you want to run Flask server locally make sure that your computer
 > has adequate infrastructure to support training. If you don't have a
@@ -590,7 +589,7 @@ height="1.6427012248468942in"}
 
 Congratulations! Everything is set! You can now use the DEMOS dApp
 
-CHAPTER 7: USING DEMOS
+## CHAPTER 7: USING DEMOS
 
 > Welcome to DEMOS! First you need to Request data the models. We advise
 > you to start with the 3 models created in INITIAL TRAINING before
@@ -722,7 +721,7 @@ possible to have a small drop.
 generated](InstructionsScreenshots/media/image76.png){width="6.5in"
 height="2.5770833333333334in"}
 
-CHAPTER 8: RESTART DEMOS AFTER THE INITIAL SETUP
+## CHAPTER 8: RESTART DEMOS AFTER THE INITIAL SETUP
 
 1.  Start Ganache and select the Blockchain you created
 
