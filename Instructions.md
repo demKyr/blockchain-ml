@@ -1,8 +1,8 @@
 # Installation guide for DEMOS dApp
 
-Note: This tutorial was created for Windows 10 however the same
+*Note: This tutorial was created for Windows 10 however the same
 procedures apply for Linux and MacOS Operating Systems. DEMOS dApp was
-created using Linux Ubuntu 20.04
+created using Linux Ubuntu 20.04*
 
 Necessary Software you need to install before starting the tutorial:
 
@@ -83,10 +83,10 @@ height="0.820495406824147in"}
 
 ##### 8.  Now it's time to set parameters for training. You are free to change these parameters however you like.
 
-Note: There is no perfect universal configuration for all datasets, try
+*Note: There is no perfect universal configuration for all datasets, try
 multiple combinations to see what fits your dataset better. Before
 changing values check
-<https://www.tensorflow.org/api_docs/python/tf/keras/Model#compile>
+<https://www.tensorflow.org/api_docs/python/tf/keras/Model#compile>*
 
 ![Graphical user interface, text, application Description automatically
 generated](InstructionsScreenshots/media/image7.png){width="6.5in"
@@ -112,8 +112,8 @@ height="0.8256780402449694in"}
 
 ##### 12. If you are not satisfied with the accuracy, set new parameters and try again
 
-Note: It is important to **save the value of accuracy** for the models
-as you will use it later
+*Note: It is important to **save the value of accuracy** for the models
+as you will use it later*
 
 ![](InstructionsScreenshots/media/image10.png){width="5.458333333333333in"
 height="0.6531342957130358in"}
@@ -159,13 +159,13 @@ height="4.055555555555555in"}
 generated](InstructionsScreenshots/media/image16.png){width="6.5in"
 height="3.1368055555555556in"}
 
-Note 1: Remember that **these configurations cannot be changed** after
+*Note 1: Remember that **these configurations cannot be changed** after
 the Blockchain is created. If you want to add more ETH or more accounts,
-you will need to create a new Blockchain
+you will need to create a new Blockchain*
 
-Note 2: Although not clearly stated, we advise you not to change the
+*Note 2: Although not clearly stated, we advise you not to change the
 default Mnemonic if you don't know what you are doing. This may cause
-problems with the connection to Metamask.
+problems with the connection to Metamask.*
 
 ##### 20. Let the rest of the configurations to default and click *SAVE WORKSPACE* to create the Blockchain. A new Ganache window will appear with a list of the newly created accounts
 
@@ -183,7 +183,7 @@ automatically
 generated](InstructionsScreenshots/media/image18.png){width="6.5in"
 height="2.073611111111111in"}
 
-Note: Always **Keep Ganache running** while running DEMOS
+*Note: Always **Keep Ganache running** while running DEMOS*
 
 ## CHAPTER 3: FRONTEND SETUP
 
@@ -212,8 +212,8 @@ height="2.1406255468066493in"}
 
 ##### 25. Download Truffle with command: *npm install -g truffle*
 
-Note: It seems like the latest version of Truffle has some glitches
-(16/06/2022). You can instead install a previous version using: *npm
+*Note: It seems like the latest version of Truffle has some glitches
+(16/06/2022). You can instead install a previous version using: npm
 install -g <truffle@5.4.29>*
 
 ##### 26. Ensure that Truffle was successfully downloaded with command: *truffle version*
@@ -240,8 +240,8 @@ height="1.9821937882764655in"}
 ![](InstructionsScreenshots/media/image27.png){width="3.6958333333333333in"
 height="0.44815944881889763in"}
 
-Note: You can now check Contracts tab in Ganache to see that state has
-changed to "DEPLOYED" and contracts have an address
+*Note: You can now check Contracts tab in Ganache to see that state has
+changed to "DEPLOYED" and contracts have an address*
 
 ![Graphical user interface, text, application, email Description
 automatically
@@ -280,7 +280,7 @@ height="0.5701388888888889in"}
 
 ##### 34. To install next.js project dependencies (aka create Node modules folder) run command: *npm install*
 
-Note: This may take some time
+*Note: This may take some time*
 
 ![Graphical user interface, application, chat or text message
 Description automatically
@@ -301,13 +301,13 @@ be seeing the Login Page of DEMOS.
 generated](InstructionsScreenshots/media/image36.png){width="3.5364588801399823in"
 height="1.847950568678915in"}
 
-Note 1: Command *npm run dev* is an alias for *next dev -p 3007.* You
+*Note 1: Command *npm run dev* is an alias for *next dev -p 3007.* You
 can view and change the aliases in "scripts" located in package.json
-file which is in the client folder
+file which is in the client folder*
 
-Note 2: **Keep frontend running** when you are running DEMOS. You can
+*Note 2: **Keep frontend running** when you are running DEMOS. You can
 terminate the deployment of the frontend by giving ctrl + C command in
-the terminal
+the terminal*
 
 ## CHAPTER 4: METAMASK SETUP
 
@@ -320,8 +320,8 @@ and interact with DEMOS
 generated](InstructionsScreenshots/media/image37.png){width="2.4993460192475943in"
 height="2.2708333333333335in"}
 
-Note: You can pin Metamask extension to make your life a bit easier as
-you will use it regularly through the rest of the tutorial
+*Note: You can pin Metamask extension to make your life a bit easier as
+you will use it regularly through the rest of the tutorial*
 
 ##### 37. A new window will open welcoming you to Metamask. Select *Get Started*
 ![Text, application Description automatically generated with medium confidence](InstructionsScreenshots/media/image38.png){width="3.1354166666666665in" height="2.3177285651793524in"}
@@ -363,8 +363,8 @@ Description automatically
 generated](InstructionsScreenshots/media/image44.png){width="6.5in"
 height="4.4430555555555555in"}
 
-Note: If Metamask window does not show up you may need to refresh or
-close and reopen the DEMOS Login Page
+*Note: If Metamask window does not show up you may need to refresh or
+close and reopen the DEMOS Login Page*
 
 You can now see the DEMOS Main Page, but we are not done yet
 
@@ -425,7 +425,7 @@ height="3.1666666666666665in"}
 generated](InstructionsScreenshots/media/image54.png){width="2.9757622484689414in"
 height="4.990740376202974in"}
 
-Note: If prompt to connect account to page click Connect
+*Note: If prompt to connect account to page click Connect*
 
 ##### 52. Repeat the same procedure to add more accounts to Metamask (we advise you to add at least 5 accounts). You can view the list of added accounts by clicking the image next to Localhost 7545
 
@@ -481,9 +481,9 @@ height="0.7291666666666666in"}
 generated](InstructionsScreenshots/media/image63.png){width="3.4895833333333335in"
 height="1.2793230533683289in"}
 
-> Note: **Keep Google Colab running** when using DEMOS. If you are on
+> *Note: **Keep Google Colab running** when using DEMOS. If you are on
 > the free tier of Google Colab, use GPU runtime **only when you need
-> it** as it is limited.
+> it** as it is limited.*
 
 And that's it! We are all set! You can now use the DEMOS dApp
 
@@ -522,7 +522,7 @@ height="1.6427012248468942in"}
 
 ##### 63. Run local Flask server with command: flask run
 
-> Note: You can stop the Flask server with ctrl + C
+> *Note: You can stop the Flask server with ctrl + C*
 
 Congratulations! Everything is set! You can now use the DEMOS dApp
 
@@ -543,11 +543,11 @@ automatically
 generated](InstructionsScreenshots/media/image66.png){width="6.5in"
 height="3.467361111111111in"}
 
-Note: You can use any Name or Description you like to describe this
+*Note: You can use any Name or Description you like to describe this
 model. We use 3 votes for validation but you can use a different number.
 Make sure you add Initial Accuracy of the model as it was in Initial
 Training using Google Colab. Finally, give labels without quotes or
-spaces in the same order as in Google Colab.
+spaces in the same order as in Google Colab.*
 
 ##### 65. Make sure you are using Account 1 in Metamask and click *Request Model*. A Metamask window pops up to confirm the transaction, click *Confirm*
 
@@ -555,7 +555,7 @@ spaces in the same order as in Google Colab.
 generated](InstructionsScreenshots/media/image67.png){width="1.6328116797900263in"
 height="3.4375in"}
 
-Note: Once you Confirm you will see a window confirming your transaction
+*Note: Once you Confirm you will see a window confirming your transaction*
 
 ![Graphical user interface, application Description automatically
 generated](InstructionsScreenshots/media/image68.png){width="1.9104899387576553in"
@@ -579,9 +579,8 @@ height="3.3472222222222223in"}
 > generated](InstructionsScreenshots/media/image71.png){width="6.5in"
 > height="2.3493055555555555in"}
 >
-> Note: An account can request data for a model and then submit such
-> data, but it doesn't make much sense. That's why we switch to Account
-> 2
+> *Note: An account can request data for a model and then submit such
+> data, but it doesn't make much sense. That's why we switch to Account 2*
 
 ##### 68. After submitting a few captions change to Account 3 and go to Review page. Review a caption by selecting a label. Then click Review Caption and confirm transaction
 
@@ -590,21 +589,21 @@ height="3.3472222222222223in"}
 > generated](InstructionsScreenshots/media/image72.png){width="6.5in"
 > height="1.7652777777777777in"}
 
-Note: if you go to Review page with Account 2 you will see nothing! This
+*Note: if you go to Review page with Account 2 you will see nothing! This
 is because the node (user) who submitted a caption cannot review it.
 Switch to Account 3 and refresh the page, now you can see the captions
-you submitted with Account 2
+you submitted with Account 2*
 
 ##### 69. Review the captions using different Metamask accounts until you vote the same label 3 times using 3 different accounts
 
-Note 1: A caption is verified when a specific label gets 3 votes from
+*Note 1: A caption is verified when a specific label gets 3 votes from
 reviewers. That is because we set Number of Votes for verification to 3.
-Then the caption disappears from the Review page (if you refresh).
+Then the caption disappears from the Review page (if you refresh).*
 
-Note 2: Once a caption is verified, you can see that the balance of the
+*Note 2: Once a caption is verified, you can see that the balance of the
 accounts that vote for the verified label increases. If the verified
 caption matches the one that was provided by the node who submitted the
-caption, then his balance increases too.
+caption, then his balance increases too.*
 
 ##### 70. Go to Predict page. Here, all the accounts can test the models using their own captions. Give it a try!
 
@@ -620,25 +619,25 @@ caption, then his balance increases too.
 > generated](InstructionsScreenshots/media/image74.png){width="6.5in"
 > height="2.6326388888888888in"}
 
-Note 1: Only the node that requested data for a model can view the
-verified data and retrain the model
+*Note 1: Only the node that requested data for a model can view the
+verified data and retrain the model*
 
-Note 2: Training and evaluation of the model takes time, you can review
-its progress from the Google Colab page
+*Note 2: Training and evaluation of the model takes time, you can review
+its progress from the Google Colab page*
 
 ![A picture containing text Description automatically
 generated](InstructionsScreenshots/media/image75.png){width="6.5in"
 height="0.83125in"}
 
-Note 3: For each caption, if verified label matches proposed label its
-container is green, otherwise it's orange.
+*Note 3: For each caption, if verified label matches proposed label its
+container is green, otherwise it's orange.*
 
 ##### 72. Finally, go to Evaluation page to view the accuracy changes of the model
 
-Note: The models are initially trained using tens of thousands of
+*Note: The models are initially trained using tens of thousands of
 captions. If you just retrain the model by using a handful of captions
 it is expected that accuracy will not be greatly affected. It is also
-possible to have a small drop.
+possible to have a small drop.*
 
 ![Chart, line chart Description automatically
 generated](InstructionsScreenshots/media/image76.png){width="6.5in"
@@ -654,8 +653,8 @@ height="2.5770833333333334in"}
 
 ##### 4.  Click Connect, a Metamask window will pop. Login to Metamask using the password set in Step 40
 
-Note: You may need to switch to Ethereum Main Network to Login and then
-switch back to localhost 7545
+*Note: You may need to switch to Ethereum Main Network to Login and then
+switch back to localhost 7545*
 
 ##### 5.  Run Flask Server
 
