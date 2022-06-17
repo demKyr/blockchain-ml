@@ -135,7 +135,6 @@ def testModel(loadedModel,tokenizer,pred_sentences,labels):
     tf_batch = tokenizer(pred_sentences, max_length=128, padding=True, truncation=True, return_tensors='tf')
     tf_outputs = loadedModel(tf_batch)
     tf_predictions = tf.nn.softmax(tf_outputs[0], axis=-1)
-    # labels = ['Positive','Negative','Neutral']
     label = tf.argmax(tf_predictions, axis=1)
     label = label.numpy()
     return labels[label[0]]
