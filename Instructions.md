@@ -386,14 +386,9 @@ generated](InstructionsScreenshots/media/image55.png)
 
 ##### 53. Connect all added accounts to the page by switching between accounts and clicking Not Connected and then Connect. Ensure that all accounts are connected
 
-![Graphical user interface, application Description automatically
-generated](InstructionsScreenshots/media/image56.png)
- user interface, text,
-application, chat or text message Description automatically
-generated](InstructionsScreenshots/media/image57.png)
- user interface, application
-Description automatically
-generated](InstructionsScreenshots/media/image58.png)
+![Graphical user interface, application Description automatically generated](InstructionsScreenshots/media/image56.png)
+![user interface, text, application, chat or text message Description automatically generated](InstructionsScreenshots/media/image57.png)
+![user interface, application Description automatically generated](InstructionsScreenshots/media/image58.png)
 
 ## CHAPTER 5: FLASK SERVER SETUP ON GOOGLE COLAB
 
