@@ -36,13 +36,11 @@ datasets
 backend/__pycache__/
 backend/env
 backend/NeuralNetwork/
+other
 
 # files
 odigies.txt
 theoritika.txt
 odigos2021.docx
 odigiesFlask.txt
-~$stallation guide.docx
 *.tmp
-Instructions.md
-Installation guide.docx
