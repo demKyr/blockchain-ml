@@ -20,8 +20,12 @@ Flask 2.1.2<br>
 ## Installation
 There is a complete Installation Guide in the repo's wiki https://gitlab.com/netmode/blockchain-ml/-/wikis/Installation-Guide
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+## Authors
+Demetris Kyriacou (@demKyr) 
+
+## Acknowledgment
+Eleni Fotopoulou (@elfo)<br>
+Anastasios Zafeiropoulos (@tzafeir)
 
 ## License
 For open source projects, say how it is licensed.
