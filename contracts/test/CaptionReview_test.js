@@ -16,7 +16,7 @@ contract("CaptionReview", (accounts) => {
   it("should allow a user to request a model", function () {
     let name = "Model a";
     let description =
-      "Tweets categorized according to their content (eg This is a good tweet -> positive)";
+      "Tweets categorized according to their content (eg. This is the best day of my life -> Positive)";
     let NumOfVotes = 3;
     let NumOfCaptions = 100;
     let initialAcc = 98765;
@@ -27,24 +27,24 @@ contract("CaptionReview", (accounts) => {
         value: 1e18,
       })
       .then(function (result) {
-        return reviewsInstance.getModel(0);
+        return reviewsInstance.getModels();
       })
       .then(function (result) {
-        assert.equal(result.name, name, "Name added correclty");
+        assert.equal(result[0].name, name, "Name added correctly");
         assert.equal(
-          result.description,
+          result[0].description,
           description,
-          "Description added correclty"
+          "Description added correctly"
         );
         assert.equal(
-          result.NumberOfVotes,
+          result[0].NumberOfVotes,
           NumOfVotes,
-          "Num of Votes added correclty"
+          "Num of Votes added correctly"
         );
         assert.equal(
-          result.NumberOfCaptions,
+          result[0].NumberOfCaptions,
           NumOfCaptions,
-          "Num of Captions added correclty"
+          "Num of Captions added correctly"
         );
       });
   });
@@ -58,11 +58,11 @@ contract("CaptionReview", (accounts) => {
         value: 1e16,
       })
       .then(function (result) {
-        return reviewsInstance.getCaption(0);
+        return reviewsInstance.getCaptions();
       })
       .then(function (result) {
-        assert.equal(result.content, caption, "Caption added correclty");
-        assert.equal(result.proposedLabel, lbl, "Label added correclty");
+        assert.equal(result[0].content, caption, "Caption added correctly");
+        assert.equal(result[0].proposedLabel, lbl, "Label added correctly");
       });
   });
 
@@ -72,20 +72,20 @@ contract("CaptionReview", (accounts) => {
     let modelId = 0;
     let oldcnt;
     return reviewsInstance
-      .getCaption(idx)
+      .getCaptions()
       .then(function (result) {
-        oldcnt = result.Votes[lbl];
+        oldcnt = result[0].Votes[lbl];
         return reviewsInstance.reviewCaption(idx, lbl, modelId, {
           from: accounts[2],
           value: 1e15,
         });
       })
       .then(function (result) {
-        return reviewsInstance.getCaption(idx);
+        return reviewsInstance.getCaptions();
       })
       .then(function (result) {
         assert.equal(
-          result.Votes[lbl],
+          result[0].Votes[lbl],
           parseInt(oldcnt) + 1,
           "Review added correctly"
         );
@@ -108,20 +108,30 @@ contract("CaptionReview", (accounts) => {
         });
       })
       .then(function (result) {
-        return reviewsInstance.getCaption(idx);
+        return reviewsInstance.getCaptions();
       })
       .then(function (result) {
         assert.equal(
-          result.verified,
+          result[0].verified,
           true,
           "A label reached X votes so caption is verified"
         );
       });
   });
 
-  it("should return number of captions", function () {
-    return reviewsInstance.getCaptionCnt().then(function (result) {
-      assert.equal(result, 1, "Number of captions obtained successfully");
-    });
+  it("should should allow adding new accuracy value", function () {
+    let idx = 0;
+    let acc = 99999;
+    return reviewsInstance.addAccuracy(idx,acc)
+    .then(function (result) {
+      return reviewsInstance.getModels();
+    })
+    .then(function (result) {
+      assert.equal(
+        result[0].accuracy[1],
+        acc,
+        "A label reached X votes so caption is verified"
+      );
+    })
   });
 });

@@ -43,7 +43,7 @@ function VerifyPage() {
           for (const key in captionsDataInput) {
             if (
               captionsDataInput[key][5] &&
-              !captionsDataInput[key][8] &&
+              // !captionsDataInput[key][8] &&
               captionsPerModel.hasOwnProperty(captionsDataInput[key][1])
             ) {
               const captionData = {

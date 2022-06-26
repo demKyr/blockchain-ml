@@ -1,6 +1,8 @@
 import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
 import { Fragment, useContext } from "react";
+// import { useRouter } from "next/router";
+import Router from 'next/router'
 
 import ContractsContext from "../../store/contract-context";
 import { APIpath } from "../../constants/parameters";
@@ -38,8 +40,10 @@ function VerifiedCaptionList(props) {
           usedCaptionsIds.push(parseInt(usedCaptions[key]["id"]));
         }
         await contractsCtx.contracts["submitReview"].updateCaptionTrainStatus(
-          usedCaptionsIds
+          usedCaptionsIds.reverse()
         );
+        Router.push({pathname: "/evaluation",});
+        // window.location.reload()
       } catch (error) {
         console.log(error);
       }
