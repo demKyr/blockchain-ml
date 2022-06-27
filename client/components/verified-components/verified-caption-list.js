@@ -43,7 +43,6 @@ function VerifiedCaptionList(props) {
           usedCaptionsIds.reverse()
         );
         Router.push({pathname: "/evaluation",});
-        // window.location.reload()
       } catch (error) {
         console.log(error);
       }

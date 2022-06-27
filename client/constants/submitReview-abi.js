@@ -219,37 +219,6 @@ module.exports = {
         "constant": true
       },
       {
-        "inputs": [],
-        "name": "getUsedCaptions",
-        "outputs": [
-          {
-            "components": [
-              {
-                "internalType": "string",
-                "name": "content",
-                "type": "string"
-              },
-              {
-                "internalType": "uint256",
-                "name": "modelId",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint8",
-                "name": "verifiedLabel",
-                "type": "uint8"
-              }
-            ],
-            "internalType": "struct CaptionReview.UsedCaption[]",
-            "name": "",
-            "type": "tuple[]"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function",
-        "constant": true
-      },
-      {
         "inputs": [
           {
             "internalType": "uint256",

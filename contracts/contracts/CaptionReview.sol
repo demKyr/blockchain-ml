@@ -20,12 +20,6 @@ contract CaptionReview {
         address[] voters;
     }
 
-    struct UsedCaption{
-        string content;
-        uint256 modelId;
-        uint8 verifiedLabel;
-    }
-
     struct ModelInfo{
         uint256 id;
         string name;
@@ -38,8 +32,6 @@ contract CaptionReview {
     }
 
     Caption[] captions;
-
-    UsedCaption[] usedCaptions;
 
     ModelInfo[] models;
 
@@ -100,17 +92,12 @@ contract CaptionReview {
         return captions;
     }
 
-    function getUsedCaptions() public view returns( UsedCaption  [] memory){
-        return usedCaptions;
-    }
-
     function addAccuracy(uint _idx, uint _acc) public{
         models[_idx].accuracy.push(_acc);
     }
 
     function updateCaptionTrainStatus(uint[] memory _inputUsedCaptions) public {
         for(uint i = 0; i < _inputUsedCaptions.length ; i++){
-            usedCaptions.push(UsedCaption(captions[_inputUsedCaptions[i]].content,captions[_inputUsedCaptions[i]].modelId,captions[_inputUsedCaptions[i]].verifiedLabel));
             captions[_inputUsedCaptions[i]] = captions[captions.length - 1];
             captions.pop();
         }
