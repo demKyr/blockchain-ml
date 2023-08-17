@@ -26,6 +26,3 @@ Demetris Kyriacou (@demKyr)
 ## Acknowledgment
 Eleni Fotopoulou (@elfo)<br>
 Anastasios Zafeiropoulos (@tzafeir)
-
-## License
-For open source projects, say how it is licensed.
