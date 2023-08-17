@@ -26,3 +26,6 @@ Demetris Kyriacou (@demKyr)
 ## Acknowledgment
 Eleni Fotopoulou (@elfo)<br>
 Anastasios Zafeiropoulos (@tzafeir)
+
+## License
+GNU Affero General Public License v3.0
